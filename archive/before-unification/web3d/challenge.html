@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Dark Microcosmos</title>
+<link rel="icon" href="./cosmogram.svg">
+<link rel="stylesheet" href="./fonts/fonts.css">
+</head>
+<body>
+<div id="stage" role="img" aria-label="Six planet-ships on a ring around your station, above the Seventh Basin"></div>
+<div id="labels" aria-hidden="true"></div>
+
+<header class="top">
+  <div class="brand">
+    <p class="eyebrow" id="mode">Free play</p>
+    <h1>The Dark <span>Microcosmos</span></h1>
+  </div>
+  <nav class="tools" aria-label="Game">
+    <span id="where"></span>
+    <button type="button" id="open-menu">Worlds</button>
+    <button type="button" id="restart">Start over</button>
+    <a class="quiet" href="./play/">Simple version</a>
+    <a class="quiet" href="./">Living currents</a>
+  </nav>
+</header>
+
+<aside class="status" aria-label="Status">
+  <div class="card" id="round-card"><span class="lab">Round</span><div id="round"></div></div>
+  <div class="card" id="basin-card"><span class="lab">Seventh Basin</span><div id="basin"></div></div>
+  <div class="card" id="station-card"><span class="lab">Your station</span><div id="station"></div></div>
+  <div id="threat" class="threat" role="status" hidden></div>
+  <div id="coach" class="coach" role="status" hidden></div>
+</aside>
+
+<section id="panel" class="panel" aria-label="Choose your move">
+  <div id="ships" class="ships" role="group" aria-label="Ships"></div>
+  <div id="card"></div>
+  <div id="acts" class="acts" role="group" aria-label="Actions"></div>
+  <div id="preview" class="preview" aria-live="polite"></div>
+  <div id="commit" class="commit" hidden></div>
+</section>
+
+<section id="story" class="story" aria-live="polite" aria-label="What happened"></section>
+
+<div id="ending" class="overlay" hidden><div class="sheet" role="dialog" aria-modal="true" aria-labelledby="end-title" id="ending-sheet"></div></div>
+<div id="menu" class="overlay" hidden><div class="sheet" role="dialog" aria-modal="true" aria-labelledby="menu-title" id="menu-sheet"></div></div>
+<script type="module" src="./main.ts"></script>
+</body>
+</html>

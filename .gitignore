@@ -1,0 +1,11 @@
+node_modules/
+dist/
+dist3d/
+web/dist/shot-*.html
+.DS_Store
+.transfer/
+vite.config.ts.timestamp-*
+web/dist-release/
+dist-release/
+docs/references/*.png
+__pycache__/

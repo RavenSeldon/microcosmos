@@ -1,0 +1,34 @@
+{
+  "name": "microcosmos",
+  "version": "0.6.0-orbit",
+  "private": true,
+  "type": "module",
+  "description": "Dark Microcosmos: six individual worlds, a circular economy, and player-paced relationships.",
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.ts",
+    "baseline": "node scripts/run.ts baseline",
+    "sweeps": "node scripts/run.ts",
+    "report": "node scripts/report.ts",
+    "replay": "node scripts/replay.ts",
+    "g1a": "node scripts/g1a.ts",
+    "report-g1a": "node scripts/report-g1a.ts",
+    "g1b": "node scripts/g1b.ts",
+    "report-g1b": "node scripts/report-g1b.ts",
+    "web": "node scripts/build-web.ts",
+    "world": "vite",
+    "world-build": "vite build",
+    "release": "vite build && node scripts/build-web.ts --release && python3 scripts/build_release.py",
+    "web-check": "node scripts/build-web.ts --shots && sh scripts/check-web.sh",
+    "all": "npm test && npm run sweeps && npm run report"
+  },
+  "devDependencies": {
+    "esbuild": "^0.24.0",
+    "vite": "^5.4.11"
+  },
+  "dependencies": {
+    "three": "^0.170.0"
+  }
+}

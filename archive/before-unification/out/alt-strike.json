@@ -1,0 +1,2349 @@
+{
+  "id": "strike",
+  "label": "STRIKE as it is (G1b rule)",
+  "params": {
+    "rounds": 6,
+    "districts": 6,
+    "supplyMode": "relative",
+    "supply": 60,
+    "slack": -1,
+    "basinMin": 30,
+    "integrity": 3,
+    "exposure": {
+      "listen": 0,
+      "signal": 2,
+      "strike": 3,
+      "hide": -2,
+      "max": 4,
+      "targetable": 2
+    },
+    "strike": {
+      "prevent": 5,
+      "destroy": 2,
+      "catchup": 3
+    },
+    "signal": {
+      "cover": 4,
+      "duration": 2,
+      "capacityMin": 2,
+      "extractiveAcceptReserve": 8,
+      "extractiveDefectBelow": 6
+    },
+    "need": {
+      "min": 3,
+      "max": 8,
+      "shocks": [
+        -1,
+        0,
+        0,
+        1
+      ]
+    },
+    "reserve": {
+      "min": 0,
+      "max": 10,
+      "comfort": 4,
+      "refill": 1
+    },
+    "bands": {
+      "lowMax": 3,
+      "highMin": 8
+    },
+    "seriousUnmet": 2,
+    "failure": {
+      "basinRule": "consecutive",
+      "basinConsecutive": 2,
+      "basinBuffer": 6,
+      "districtConsecutive": 2
+    },
+    "mix": {
+      "R": 0.4,
+      "E": 0.35,
+      "P": 0.25
+    },
+    "autonomous": true,
+    "maxStationHitsPerRound": 1,
+    "preemption": "threat"
+  },
+  "firstSeed": 1,
+  "lastSeed": 300,
+  "summary": {
+    "seeds": 300,
+    "classes": {
+      "unwinnable": 0.0033333333333333335,
+      "passiveWins": 0.15333333333333332,
+      "rescuable": 0.8433333333333334
+    },
+    "amongRescuable": {
+      "n": 253,
+      "winnableWithoutStrike": 0.9881422924901185,
+      "winnableWithoutSignal": 0.6719367588932806,
+      "strikeRequired": 0.011857707509881422,
+      "signalRequired": 0.32806324110671936,
+      "bothRoutes": 0.6640316205533597,
+      "meanWinFraction": 0.04757567930411535,
+      "minActive": [
+        0.857707509881423,
+        0.1383399209486166,
+        0.003952569169960474,
+        0
+      ]
+    },
+    "amongPassiveWins": {
+      "n": 46,
+      "meanWinFraction": 0.1075932357440047
+    },
+    "bots": {
+      "hide x6 (do nothing)": {
+        "winRate": 0.15333333333333332,
+        "winRateWinnable": 0.15384615384615385,
+        "winRateRescuable": 0,
+        "lossStation": 0,
+        "lossBasin": 0.8466666666666667,
+        "lossDistrict": 0,
+        "meanHarm": 0.7133333333333334,
+        "meanDistressRounds": 0.10333333333333333,
+        "meanStrikes": 0,
+        "meanSignals": 0
+      },
+      "strike every round": {
+        "winRate": 0.0033333333333333335,
+        "winRateWinnable": 0.0033444816053511705,
+        "winRateRescuable": 0.003952569169960474,
+        "lossStation": 0.68,
+        "lossBasin": 0.6033333333333334,
+        "lossDistrict": 0.006666666666666667,
+        "meanHarm": 2.6166666666666667,
+        "meanDistressRounds": 0.42333333333333334,
+        "meanStrikes": 2.75,
+        "meanSignals": 0
+      },
+      "alternate strike": {
+        "winRate": 0.04,
+        "winRateWinnable": 0.04013377926421405,
+        "winRateRescuable": 0.04743083003952569,
+        "lossStation": 0.5833333333333334,
+        "lossBasin": 0.4066666666666667,
+        "lossDistrict": 0,
+        "meanHarm": 2.9633333333333334,
+        "meanDistressRounds": 0.44333333333333336,
+        "meanStrikes": 1.8766666666666667,
+        "meanSignals": 0
+      },
+      "reactive strike": {
+        "winRate": 0.06,
+        "winRateWinnable": 0.06020066889632107,
+        "winRateRescuable": 0.06719367588932806,
+        "lossStation": 0.38666666666666666,
+        "lossBasin": 0.55,
+        "lossDistrict": 0.0033333333333333335,
+        "meanHarm": 2.38,
+        "meanDistressRounds": 0.37666666666666665,
+        "meanStrikes": 2.026666666666667,
+        "meanSignals": 0
+      },
+      "cooperate, hide when exposed": {
+        "winRate": 0.41,
+        "winRateWinnable": 0.411371237458194,
+        "winRateRescuable": 0.35177865612648224,
+        "lossStation": 0,
+        "lossBasin": 0.59,
+        "lossDistrict": 0,
+        "meanHarm": 1.35,
+        "meanDistressRounds": 0.2966666666666667,
+        "meanStrikes": 0,
+        "meanSignals": 2.3266666666666667
+      },
+      "cooperate loudly": {
+        "winRate": 0.08333333333333333,
+        "winRateWinnable": 0.08361204013377926,
+        "winRateRescuable": 0.09090909090909091,
+        "lossStation": 0.75,
+        "lossBasin": 0.24333333333333335,
+        "lossDistrict": 0,
+        "meanHarm": 1.08,
+        "meanDistressRounds": 0.25333333333333335,
+        "meanStrikes": 0,
+        "meanSignals": 3.986666666666667
+      },
+      "listen once, then cooperate": {
+        "winRate": 0.5133333333333333,
+        "winRateWinnable": 0.5150501672240803,
+        "winRateRescuable": 0.4782608695652174,
+        "lossStation": 0,
+        "lossBasin": 0.4866666666666667,
+        "lossDistrict": 0,
+        "meanHarm": 1.2,
+        "meanDistressRounds": 0.2633333333333333,
+        "meanStrikes": 0,
+        "meanSignals": 2.3833333333333333
+      },
+      "listen before every offer": {
+        "winRate": 0.31,
+        "winRateWinnable": 0.3110367892976589,
+        "winRateRescuable": 0.22924901185770752,
+        "lossStation": 0,
+        "lossBasin": 0.69,
+        "lossDistrict": 0,
+        "meanHarm": 0.96,
+        "meanDistressRounds": 0.21,
+        "meanStrikes": 0,
+        "meanSignals": 0.8633333333333333
+      },
+      "informed mixed, no listen": {
+        "winRate": 0.4866666666666667,
+        "winRateWinnable": 0.4882943143812709,
+        "winRateRescuable": 0.4624505928853755,
+        "lossStation": 0.05,
+        "lossBasin": 0.47333333333333333,
+        "lossDistrict": 0,
+        "meanHarm": 1.5966666666666667,
+        "meanDistressRounds": 0.37,
+        "meanStrikes": 0,
+        "meanSignals": 3.0533333333333332
+      },
+      "informed mixed": {
+        "winRate": 0.5633333333333334,
+        "winRateWinnable": 0.5652173913043478,
+        "winRateRescuable": 0.5335968379446641,
+        "lossStation": 0,
+        "lossBasin": 0.43666666666666665,
+        "lossDistrict": 0,
+        "meanHarm": 1.2566666666666666,
+        "meanDistressRounds": 0.2733333333333333,
+        "meanStrikes": 0.01,
+        "meanSignals": 2.4766666666666666
+      },
+      "defuse by signal": {
+        "winRate": 0.43666666666666665,
+        "winRateWinnable": 0.43812709030100333,
+        "winRateRescuable": 0.41106719367588934,
+        "lossStation": 0.02,
+        "lossBasin": 0.5433333333333333,
+        "lossDistrict": 0,
+        "meanHarm": 1.1366666666666667,
+        "meanDistressRounds": 0.2633333333333333,
+        "meanStrikes": 0,
+        "meanSignals": 2.486666666666667
+      },
+      "defuse by strike": {
+        "winRate": 0.15666666666666668,
+        "winRateWinnable": 0.15719063545150502,
+        "winRateRescuable": 0.15019762845849802,
+        "lossStation": 0.37666666666666665,
+        "lossBasin": 0.6433333333333333,
+        "lossDistrict": 0,
+        "meanHarm": 0.91,
+        "meanDistressRounds": 0.19,
+        "meanStrikes": 1.1866666666666668,
+        "meanSignals": 1.5066666666666666
+      },
+      "defuse: signal, else strike": {
+        "winRate": 0.21333333333333335,
+        "winRateWinnable": 0.2140468227424749,
+        "winRateRescuable": 0.21739130434782608,
+        "lossStation": 0.45,
+        "lossBasin": 0.49666666666666665,
+        "lossDistrict": 0,
+        "meanHarm": 0.65,
+        "meanDistressRounds": 0.16,
+        "meanStrikes": 0.6433333333333333,
+        "meanSignals": 2.5
+      },
+      "guard: strike threats only": {
+        "winRate": 0.02666666666666667,
+        "winRateWinnable": 0.026755852842809364,
+        "winRateRescuable": 0.007905138339920948,
+        "lossStation": 0.4166666666666667,
+        "lossBasin": 0.7233333333333334,
+        "lossDistrict": 0,
+        "meanHarm": 0.48,
+        "meanDistressRounds": 0.03,
+        "meanStrikes": 1.4,
+        "meanSignals": 0
+      },
+      "shield the threatened": {
+        "winRate": 0.15333333333333332,
+        "winRateWinnable": 0.15384615384615385,
+        "winRateRescuable": 0.15019762845849802,
+        "lossStation": 0.3233333333333333,
+        "lossBasin": 0.5766666666666667,
+        "lossDistrict": 0.01,
+        "meanHarm": 3.7333333333333334,
+        "meanDistressRounds": 0.68,
+        "meanStrikes": 0.97,
+        "meanSignals": 1.53
+      },
+      "listen, then reveal": {
+        "winRate": 0.31333333333333335,
+        "winRateWinnable": 0.31438127090301005,
+        "winRateRescuable": 0.26877470355731226,
+        "lossStation": 0.13666666666666666,
+        "lossBasin": 0.5966666666666667,
+        "lossDistrict": 0,
+        "meanHarm": 1.6666666666666667,
+        "meanDistressRounds": 0.32666666666666666,
+        "meanStrikes": 0.41333333333333333,
+        "meanSignals": 1.5766666666666667
+      },
+      "random (mean of 20)": {
+        "winRate": 0.0573333333333337,
+        "winRateWinnable": 0.0575250836120405,
+        "winRateRescuable": 0.051778656126482414,
+        "lossStation": 0.5653333333333477,
+        "lossBasin": 0.5953333333333546,
+        "lossDistrict": 0.0005000000000000001,
+        "meanHarm": 1.4848333333333679,
+        "meanDistressRounds": 0.2893333333333253,
+        "meanStrikes": 1.1356666666667319,
+        "meanSignals": 1.1803333333333843
+      }
+    },
+    "meanStates": 7339.01
+  },
+  "conflict": {
+    "hide x6 (do nothing)": {
+      "legacyWinRate": 0.15333333333333332,
+      "mean": {
+        "threatsIssued": 1.8733333333333333,
+        "executed": 0.9766666666666667,
+        "cancelled": 0.7066666666666667,
+        "interrupted": 0,
+        "threatOutstanding": 0.19,
+        "retaliation": 1.02,
+        "provoked": 0.09333333333333334,
+        "unprovoked": 0,
+        "strikes": 2.09,
+        "destroyed": 4.18,
+        "hardship": 1.1633333333333333,
+        "basinHarm": 11.593333333333334,
+        "reserveChange": 0.44333333333333336,
+        "stationDamage": 0,
+        "stationStrikes": 0
+      },
+      "worldsWithNoStrike": 0.35
+    },
+    "strike every round": {
+      "legacyWinRate": 0.0033333333333333335,
+      "mean": {
+        "threatsIssued": 1.94,
+        "executed": 1.09,
+        "cancelled": 0.42,
+        "interrupted": 0.18333333333333332,
+        "threatOutstanding": 0.24666666666666667,
+        "retaliation": 1.1633333333333333,
+        "provoked": 0.13333333333333333,
+        "unprovoked": 0,
+        "strikes": 2.3866666666666667,
+        "destroyed": 10.226666666666667,
+        "hardship": 3.4966666666666666,
+        "basinHarm": 14.126666666666667,
+        "reserveChange": -1.0566666666666666,
+        "stationDamage": 2.88,
+        "stationStrikes": 2.75
+      },
+      "worldsWithNoStrike": 0.22666666666666666
+    },
+    "alternate strike": {
+      "legacyWinRate": 0.04,
+      "mean": {
+        "threatsIssued": 1.82,
+        "executed": 1.04,
+        "cancelled": 0.47,
+        "interrupted": 0.08333333333333333,
+        "threatOutstanding": 0.22666666666666666,
+        "retaliation": 1.2433333333333334,
+        "provoked": 0.14666666666666667,
+        "unprovoked": 0,
+        "strikes": 2.43,
+        "destroyed": 8.59,
+        "hardship": 3.4233333333333333,
+        "basinHarm": 14.33,
+        "reserveChange": -0.7,
+        "stationDamage": 2.796666666666667,
+        "stationStrikes": 1.8766666666666667
+      },
+      "worldsWithNoStrike": 0.24
+    },
+    "reactive strike": {
+      "legacyWinRate": 0.06,
+      "mean": {
+        "threatsIssued": 1.8033333333333332,
+        "executed": 1.14,
+        "cancelled": 0.37333333333333335,
+        "interrupted": 0.07,
+        "threatOutstanding": 0.22,
+        "retaliation": 1.33,
+        "provoked": 0.11333333333333333,
+        "unprovoked": 0,
+        "strikes": 2.5833333333333335,
+        "destroyed": 9.173333333333334,
+        "hardship": 3.1466666666666665,
+        "basinHarm": 13.953333333333333,
+        "reserveChange": -0.8466666666666667,
+        "stationDamage": 2.79,
+        "stationStrikes": 2.026666666666667
+      },
+      "worldsWithNoStrike": 0.22333333333333333
+    },
+    "cooperate, hide when exposed": {
+      "legacyWinRate": 0.41,
+      "mean": {
+        "threatsIssued": 1.7666666666666666,
+        "executed": 0.7966666666666666,
+        "cancelled": 0.7766666666666666,
+        "interrupted": 0,
+        "threatOutstanding": 0.19333333333333333,
+        "retaliation": 0.55,
+        "provoked": 0.06333333333333334,
+        "unprovoked": 0,
+        "strikes": 1.41,
+        "destroyed": 2.8033333333333332,
+        "hardship": 1.7433333333333334,
+        "basinHarm": 7.9,
+        "reserveChange": -6.866666666666666,
+        "stationDamage": 0,
+        "stationStrikes": 0
+      },
+      "worldsWithNoStrike": 0.45
+    },
+    "cooperate loudly": {
+      "legacyWinRate": 0.08333333333333333,
+      "mean": {
+        "threatsIssued": 1.6766666666666667,
+        "executed": 0.7266666666666667,
+        "cancelled": 0.75,
+        "interrupted": 0,
+        "threatOutstanding": 0.2,
+        "retaliation": 0.32666666666666666,
+        "provoked": 0.06,
+        "unprovoked": 0,
+        "strikes": 1.1133333333333333,
+        "destroyed": 2.2066666666666666,
+        "hardship": 1.9266666666666667,
+        "basinHarm": 8.3,
+        "reserveChange": -9.68,
+        "stationDamage": 2.49,
+        "stationStrikes": 0
+      },
+      "worldsWithNoStrike": 0.49
+    },
+    "listen once, then cooperate": {
+      "legacyWinRate": 0.5133333333333333,
+      "mean": {
+        "threatsIssued": 1.9933333333333334,
+        "executed": 0.7133333333333334,
+        "cancelled": 1.0233333333333334,
+        "interrupted": 0,
+        "threatOutstanding": 0.25666666666666665,
+        "retaliation": 0.4266666666666667,
+        "provoked": 0.08,
+        "unprovoked": 0,
+        "strikes": 1.22,
+        "destroyed": 2.43,
+        "hardship": 1.46,
+        "basinHarm": 8.216666666666667,
+        "reserveChange": -7.093333333333334,
+        "stationDamage": 0,
+        "stationStrikes": 0
+      },
+      "worldsWithNoStrike": 0.4666666666666667
+    },
+    "listen before every offer": {
+      "legacyWinRate": 0.31,
+      "mean": {
+        "threatsIssued": 1.9466666666666668,
+        "executed": 0.8466666666666667,
+        "cancelled": 0.8933333333333333,
+        "interrupted": 0,
+        "threatOutstanding": 0.20666666666666667,
+        "retaliation": 0.6566666666666666,
+        "provoked": 0.08333333333333333,
+        "unprovoked": 0,
+        "strikes": 1.5866666666666667,
+        "destroyed": 3.1666666666666665,
+        "hardship": 1.4166666666666667,
+        "basinHarm": 9.943333333333333,
+        "reserveChange": -3.276666666666667,
+        "stationDamage": 0,
+        "stationStrikes": 0
+      },
+      "worldsWithNoStrike": 0.41333333333333333
+    },
+    "informed mixed, no listen": {
+      "legacyWinRate": 0.4866666666666667,
+      "mean": {
+        "threatsIssued": 1.7866666666666666,
+        "executed": 0.74,
+        "cancelled": 0.8333333333333334,
+        "interrupted": 0,
+        "threatOutstanding": 0.21333333333333335,
+        "retaliation": 0.43,
+        "provoked": 0.07333333333333333,
+        "unprovoked": 0,
+        "strikes": 1.2433333333333334,
+        "destroyed": 2.4633333333333334,
+        "hardship": 1.8733333333333333,
+        "basinHarm": 7.58,
+        "reserveChange": -8.246666666666666,
+        "stationDamage": 1.1166666666666667,
+        "stationStrikes": 0
+      },
+      "worldsWithNoStrike": 0.47333333333333333
+    },
+    "informed mixed": {
+      "legacyWinRate": 0.5633333333333334,
+      "mean": {
+        "threatsIssued": 1.98,
+        "executed": 0.7066666666666667,
+        "cancelled": 1.03,
+        "interrupted": 0,
+        "threatOutstanding": 0.24333333333333335,
+        "retaliation": 0.37,
+        "provoked": 0.08,
+        "unprovoked": 0,
+        "strikes": 1.1566666666666667,
+        "destroyed": 2.3266666666666667,
+        "hardship": 1.4833333333333334,
+        "basinHarm": 7.98,
+        "reserveChange": -7.533333333333333,
+        "stationDamage": 0.20333333333333334,
+        "stationStrikes": 0.01
+      },
+      "worldsWithNoStrike": 0.48
+    },
+    "defuse by signal": {
+      "legacyWinRate": 0.43666666666666665,
+      "mean": {
+        "threatsIssued": 1.8866666666666667,
+        "executed": 0.6666666666666666,
+        "cancelled": 0.9833333333333333,
+        "interrupted": 0,
+        "threatOutstanding": 0.23666666666666666,
+        "retaliation": 0.37,
+        "provoked": 0.056666666666666664,
+        "unprovoked": 0,
+        "strikes": 1.0933333333333333,
+        "destroyed": 2.17,
+        "hardship": 1.5166666666666666,
+        "basinHarm": 7.913333333333333,
+        "reserveChange": -7.026666666666666,
+        "stationDamage": 0.38333333333333336,
+        "stationStrikes": 0
+      },
+      "worldsWithNoStrike": 0.52
+    },
+    "defuse by strike": {
+      "legacyWinRate": 0.15666666666666668,
+      "mean": {
+        "threatsIssued": 2.15,
+        "executed": 0.48333333333333334,
+        "cancelled": 0.7433333333333333,
+        "interrupted": 0.7433333333333333,
+        "threatOutstanding": 0.18,
+        "retaliation": 0.25,
+        "provoked": 0.07,
+        "unprovoked": 0,
+        "strikes": 0.8033333333333333,
+        "destroyed": 3.9433333333333334,
+        "hardship": 1.4633333333333334,
+        "basinHarm": 10.036666666666667,
+        "reserveChange": -5.083333333333333,
+        "stationDamage": 1.85,
+        "stationStrikes": 1.1866666666666668
+      },
+      "worldsWithNoStrike": 0.5533333333333333
+    },
+    "defuse: signal, else strike": {
+      "legacyWinRate": 0.21333333333333335,
+      "mean": {
+        "threatsIssued": 1.9833333333333334,
+        "executed": 0.5433333333333333,
+        "cancelled": 0.9066666666666666,
+        "interrupted": 0.31666666666666665,
+        "threatOutstanding": 0.21666666666666667,
+        "retaliation": 0.24666666666666667,
+        "provoked": 0.07333333333333333,
+        "unprovoked": 0,
+        "strikes": 0.8633333333333333,
+        "destroyed": 2.9833333333333334,
+        "hardship": 1.2266666666666666,
+        "basinHarm": 9.136666666666667,
+        "reserveChange": -6.743333333333333,
+        "stationDamage": 2.05,
+        "stationStrikes": 0.6433333333333333
+      },
+      "worldsWithNoStrike": 0.55
+    },
+    "guard: strike threats only": {
+      "legacyWinRate": 0.02666666666666667,
+      "mean": {
+        "threatsIssued": 2.513333333333333,
+        "executed": 0.54,
+        "cancelled": 0.8766666666666667,
+        "interrupted": 0.8966666666666666,
+        "threatOutstanding": 0.2,
+        "retaliation": 0.34,
+        "provoked": 0.08333333333333333,
+        "unprovoked": 0,
+        "strikes": 0.9633333333333334,
+        "destroyed": 4.726666666666667,
+        "hardship": 0.9333333333333333,
+        "basinHarm": 12.346666666666666,
+        "reserveChange": 0.29,
+        "stationDamage": 2,
+        "stationStrikes": 1.4
+      },
+      "worldsWithNoStrike": 0.5066666666666667
+    },
+    "shield the threatened": {
+      "legacyWinRate": 0.15333333333333332,
+      "mean": {
+        "threatsIssued": 1.7666666666666666,
+        "executed": 0.97,
+        "cancelled": 0.5866666666666667,
+        "interrupted": 0,
+        "threatOutstanding": 0.21,
+        "retaliation": 0.8233333333333334,
+        "provoked": 0.08,
+        "unprovoked": 0,
+        "strikes": 1.8733333333333333,
+        "destroyed": 5.6866666666666665,
+        "hardship": 4.23,
+        "basinHarm": 10.01,
+        "reserveChange": -4.23,
+        "stationDamage": 1.7333333333333334,
+        "stationStrikes": 0.97
+      },
+      "worldsWithNoStrike": 0.39
+    },
+    "listen, then reveal": {
+      "legacyWinRate": 0.31333333333333335,
+      "mean": {
+        "threatsIssued": 2.0433333333333334,
+        "executed": 0.6866666666666666,
+        "cancelled": 1.11,
+        "interrupted": 0.0033333333333333335,
+        "threatOutstanding": 0.24333333333333335,
+        "retaliation": 0.53,
+        "provoked": 0.08,
+        "unprovoked": 0,
+        "strikes": 1.2966666666666666,
+        "destroyed": 3.42,
+        "hardship": 2.013333333333333,
+        "basinHarm": 9.923333333333334,
+        "reserveChange": -4.046666666666667,
+        "stationDamage": 1.14,
+        "stationStrikes": 0.41333333333333333
+      },
+      "worldsWithNoStrike": 0.49
+    }
+  },
+  "harm": {
+    "seeds": 300,
+    "firstSeed": 1,
+    "lastSeed": 300,
+    "bots": {
+      "hide x6 (do nothing)": {
+        "legacyWinRate": 0.15333333333333332,
+        "meanEndedRound": 3.506666666666667,
+        "mean": {
+          "hardship": 1.1633333333333333,
+          "distressRounds": 0.10333333333333333,
+          "basinHarm": 11.593333333333334,
+          "destroyed": 4.18,
+          "reserveChange": 0.44333333333333336,
+          "emptyReserves": 0.3,
+          "agreementDraw": 0,
+          "emergencyDraw": 8.66,
+          "stationDamage": 0,
+          "catchupOutstanding": 1.3733333333333333,
+          "agreementRoundsOutstanding": 0,
+          "agreementDrawCommitted": 0
+        },
+        "vsNothing": {
+          "hardship": {
+            "diff": 0,
+            "lo": 0,
+            "hi": 0
+          },
+          "distressRounds": {
+            "diff": 0,
+            "lo": 0,
+            "hi": 0
+          },
+          "basinHarm": {
+            "diff": 0,
+            "lo": 0,
+            "hi": 0
+          },
+          "destroyed": {
+            "diff": 0,
+            "lo": 0,
+            "hi": 0
+          },
+          "reserveChange": {
+            "diff": 0,
+            "lo": 0,
+            "hi": 0
+          },
+          "emptyReserves": {
+            "diff": 0,
+            "lo": 0,
+            "hi": 0
+          },
+          "agreementDraw": {
+            "diff": 0,
+            "lo": 0,
+            "hi": 0
+          },
+          "emergencyDraw": {
+            "diff": 0,
+            "lo": 0,
+            "hi": 0
+          },
+          "stationDamage": {
+            "diff": 0,
+            "lo": 0,
+            "hi": 0
+          },
+          "catchupOutstanding": {
+            "diff": 0,
+            "lo": 0,
+            "hi": 0
+          },
+          "agreementRoundsOutstanding": {
+            "diff": 0,
+            "lo": 0,
+            "hi": 0
+          },
+          "agreementDrawCommitted": {
+            "diff": 0,
+            "lo": 0,
+            "hi": 0
+          }
+        },
+        "wins": {
+          "n": 46,
+          "shareWithHardship": 0.6304347826086957,
+          "shareWithEmptyReserve": 0.32608695652173914,
+          "shareWithObligations": 0.5434782608695652,
+          "mean": {
+            "hardship": 1.2391304347826086,
+            "distressRounds": 0.06521739130434782,
+            "basinHarm": 9.152173913043478,
+            "destroyed": 4.434782608695652,
+            "reserveChange": -1,
+            "emptyReserves": 0.32608695652173914,
+            "agreementDraw": 0,
+            "emergencyDraw": 9.369565217391305,
+            "stationDamage": 0,
+            "catchupOutstanding": 1.608695652173913,
+            "agreementRoundsOutstanding": 0,
+            "agreementDrawCommitted": 0
+          }
+        }
+      },
+      "strike every round": {
+        "legacyWinRate": 0.0033333333333333335,
+        "meanEndedRound": 2.75,
+        "mean": {
+          "hardship": 3.4966666666666666,
+          "distressRounds": 0.42333333333333334,
+          "basinHarm": 14.126666666666667,
+          "destroyed": 10.226666666666667,
+          "reserveChange": -1.0566666666666666,
+          "emptyReserves": 0.38,
+          "agreementDraw": 0,
+          "emergencyDraw": 17.216666666666665,
+          "stationDamage": 2.88,
+          "catchupOutstanding": 1.5333333333333334,
+          "agreementRoundsOutstanding": 0,
+          "agreementDrawCommitted": 0
+        },
+        "vsNothing": {
+          "hardship": {
+            "diff": 2.3333333333333335,
+            "lo": 2.1098046578850203,
+            "hi": 2.5568620087816467
+          },
+          "distressRounds": {
+            "diff": 0.32,
+            "lo": 0.2595657070189785,
+            "hi": 0.3804342929810215
+          },
+          "basinHarm": {
+            "diff": 2.533333333333333,
+            "lo": 2.206339071732262,
+            "hi": 2.8603275949344042
+          },
+          "destroyed": {
+            "diff": 6.046666666666667,
+            "lo": 5.671107320840888,
+            "hi": 6.4222260124924455
+          },
+          "reserveChange": {
+            "diff": -1.5,
+            "lo": -1.8519930322610265,
+            "hi": -1.1480069677389735
+          },
+          "emptyReserves": {
+            "diff": 0.08,
+            "lo": 0.022918536181123696,
+            "hi": 0.13708146381887631
+          },
+          "agreementDraw": {
+            "diff": 0,
+            "lo": 0,
+            "hi": 0
+          },
+          "emergencyDraw": {
+            "diff": 8.556666666666667,
+            "lo": 7.726448288263744,
+            "hi": 9.386885045069588
+          },
+          "stationDamage": {
+            "diff": 2.88,
+            "lo": 2.813364241724608,
+            "hi": 2.946635758275392
+          },
+          "catchupOutstanding": {
+            "diff": 0.16,
+            "lo": -0.023042553794036025,
+            "hi": 0.34304255379403603
+          },
+          "agreementRoundsOutstanding": {
+            "diff": 0,
+            "lo": 0,
+            "hi": 0
+          },
+          "agreementDrawCommitted": {
+            "diff": 0,
+            "lo": 0,
+            "hi": 0
+          }
+        },
+        "wins": {
+          "n": 1,
+          "shareWithHardship": 1,
+          "shareWithEmptyReserve": 0,
+          "shareWithObligations": 1,
+          "mean": {
+            "hardship": 1,
+            "distressRounds": 0,
+            "basinHarm": 2,
+            "destroyed": 12,
+            "reserveChange": -8,
+            "emptyReserves": 0,
+            "agreementDraw": 0,
+            "emergencyDraw": 29,
+            "stationDamage": 0,
+            "catchupOutstanding": 3,
+            "agreementRoundsOutstanding": 0,
+            "agreementDrawCommitted": 0
+          }
+        }
+      },
+      "alternate strike": {
+        "legacyWinRate": 0.04,
+        "meanEndedRound": 4.343333333333334,
+        "mean": {
+          "hardship": 3.4233333333333333,
+          "distressRounds": 0.44333333333333336,
+          "basinHarm": 14.33,
+          "destroyed": 8.59,
+          "reserveChange": -0.7,
+          "emptyReserves": 0.38333333333333336,
+          "agreementDraw": 0,
+          "emergencyDraw": 14.49,
+          "stationDamage": 2.796666666666667,
+          "catchupOutstanding": 1.6766666666666667,
+          "agreementRoundsOutstanding": 0,
+          "agreementDrawCommitted": 0
+        },
+        "vsNothing": {
+          "hardship": {
+            "diff": 2.26,
+            "lo": 2.0255258319690594,
+            "hi": 2.49447416803094
+          },
+          "distressRounds": {
+            "diff": 0.34,
+            "lo": 0.2691163819118519,
+            "hi": 0.41088361808814816
+          },
+          "basinHarm": {
+            "diff": 2.736666666666667,
+            "lo": 2.4145860782991035,
+            "hi": 3.05874725503423
+          },
+          "destroyed": {
+            "diff": 4.41,
+            "lo": 4.123501605375124,
+            "hi": 4.696498394624876
+          },
+          "reserveChange": {
+            "diff": -1.1433333333333333,
+            "lo": -1.4375216738488619,
+            "hi": -0.8491449928178048
+          },
+          "emptyReserves": {
+            "diff": 0.08333333333333333,
+            "lo": 0.03225603529080609,
+            "hi": 0.13441063137586057
+          },
+          "agreementDraw": {
+            "diff": 0,
+            "lo": 0,
+            "hi": 0
+          },
+          "emergencyDraw": {
+            "diff": 5.83,
+            "lo": 5.189320645820552,
+            "hi": 6.470679354179448
+          },
+          "stationDamage": {
+            "diff": 2.796666666666667,
+            "lo": 2.712198512550284,
+            "hi": 2.88113482078305
+          },
+          "catchupOutstanding": {
+            "diff": 0.30333333333333334,
+            "lo": 0.1381125245361177,
+            "hi": 0.468554142130549
+          },
+          "agreementRoundsOutstanding": {
+            "diff": 0,
+            "lo": 0,
+            "hi": 0
+          },
+          "agreementDrawCommitted": {
+            "diff": 0,
+            "lo": 0,
+            "hi": 0
+          }
+        },
+        "wins": {
+          "n": 12,
+          "shareWithHardship": 0.8333333333333334,
+          "shareWithEmptyReserve": 0.8333333333333334,
+          "shareWithObligations": 1,
+          "mean": {
+            "hardship": 2.5833333333333335,
+            "distressRounds": 0.08333333333333333,
+            "basinHarm": 12.416666666666666,
+            "destroyed": 6,
+            "reserveChange": -1.3333333333333333,
+            "emptyReserves": 0.8333333333333334,
+            "agreementDraw": 0,
+            "emergencyDraw": 12.083333333333334,
+            "stationDamage": 0.08333333333333333,
+            "catchupOutstanding": 3,
+            "agreementRoundsOutstanding": 0,
+            "agreementDrawCommitted": 0
+          }
+        }
+      },
+      "reactive strike": {
+        "legacyWinRate": 0.06,
+        "meanEndedRound": 3.3466666666666667,
+        "mean": {
+          "hardship": 3.1466666666666665,
+          "distressRounds": 0.37666666666666665,
+          "basinHarm": 13.953333333333333,
+          "destroyed": 9.173333333333334,
+          "reserveChange": -0.8466666666666667,
+          "emptyReserves": 0.3933333333333333,
+          "agreementDraw": 0,
+          "emergencyDraw": 15.423333333333334,
+          "stationDamage": 2.79,
+          "catchupOutstanding": 1.57,
+          "agreementRoundsOutstanding": 0,
+          "agreementDrawCommitted": 0
+        },
+        "vsNothing": {
+          "hardship": {
+            "diff": 1.9833333333333334,
+            "lo": 1.7740281530551874,
+            "hi": 2.192638513611479
+          },
+          "distressRounds": {
+            "diff": 0.2733333333333333,
+            "lo": 0.21568942793944254,
+            "hi": 0.33097723872722407
+          },
+          "basinHarm": {
+            "diff": 2.36,
+            "lo": 2.0467552737064443,
+            "hi": 2.6732447262935555
+          },
+          "destroyed": {
+            "diff": 4.993333333333333,
+            "lo": 4.634293911626398,
+            "hi": 5.352372755040268
+          },
+          "reserveChange": {
+            "diff": -1.29,
+            "lo": -1.6136440719472203,
+            "hi": -0.9663559280527798
+          },
+          "emptyReserves": {
+            "diff": 0.09333333333333334,
+            "lo": 0.03429467484723648,
+            "hi": 0.1523719918194302
+          },
+          "agreementDraw": {
+            "diff": 0,
+            "lo": 0,
+            "hi": 0
+          },
+          "emergencyDraw": {
+            "diff": 6.763333333333334,
+            "lo": 5.984809741959076,
+            "hi": 7.5418569247075915
+          },
+          "stationDamage": {
+            "diff": 2.79,
+            "lo": 2.7042303757126676,
+            "hi": 2.8757696242873325
+          },
+          "catchupOutstanding": {
+            "diff": 0.19666666666666666,
+            "lo": 0.03092824484860729,
+            "hi": 0.362405088484726
+          },
+          "agreementRoundsOutstanding": {
+            "diff": 0,
+            "lo": 0,
+            "hi": 0
+          },
+          "agreementDrawCommitted": {
+            "diff": 0,
+            "lo": 0,
+            "hi": 0
+          }
+        },
+        "wins": {
+          "n": 18,
+          "shareWithHardship": 0.6666666666666666,
+          "shareWithEmptyReserve": 0.05555555555555555,
+          "shareWithObligations": 0.05555555555555555,
+          "mean": {
+            "hardship": 2.111111111111111,
+            "distressRounds": 0.2222222222222222,
+            "basinHarm": 13.722222222222221,
+            "destroyed": 5.333333333333333,
+            "reserveChange": 1.1666666666666667,
+            "emptyReserves": 0.05555555555555555,
+            "agreementDraw": 0,
+            "emergencyDraw": 10.722222222222221,
+            "stationDamage": 0.05555555555555555,
+            "catchupOutstanding": 0.16666666666666666,
+            "agreementRoundsOutstanding": 0,
+            "agreementDrawCommitted": 0
+          }
+        }
+      },
+      "cooperate, hide when exposed": {
+        "legacyWinRate": 0.41,
+        "meanEndedRound": 4.53,
+        "mean": {
+          "hardship": 1.7433333333333334,
+          "distressRounds": 0.3566666666666667,
+          "basinHarm": 7.9,
+          "destroyed": 2.8033333333333332,
+          "reserveChange": -6.866666666666666,
+          "emptyReserves": 0.7566666666666667,
+          "agreementDraw": 11.93,
+          "emergencyDraw": 4.733333333333333,
+          "stationDamage": 0,
+          "catchupOutstanding": 0.9566666666666667,
+          "agreementRoundsOutstanding": 0.14,
+          "agreementDrawCommitted": 0.23
+        },
+        "vsNothing": {
+          "hardship": {
+            "diff": 0.58,
+            "lo": 0.35874241749730096,
+            "hi": 0.801257582502699
+          },
+          "distressRounds": {
+            "diff": 0.25333333333333335,
+            "lo": 0.1938034400841107,
+            "hi": 0.312863226582556
+          },
+          "basinHarm": {
+            "diff": -3.6933333333333334,
+            "lo": -4.120657626974689,
+            "hi": -3.266009039691978
+          },
+          "destroyed": {
+            "diff": -1.3766666666666667,
+            "lo": -1.73369951350265,
+            "hi": -1.0196338198306834
+          },
+          "reserveChange": {
+            "diff": -7.31,
+            "lo": -8.155150490725317,
+            "hi": -6.464849509274683
+          },
+          "emptyReserves": {
+            "diff": 0.45666666666666667,
+            "lo": 0.37325978505364404,
+            "hi": 0.5400735482796892
+          },
+          "agreementDraw": {
+            "diff": 11.93,
+            "lo": 10.745155898151314,
+            "hi": 13.114844101848686
+          },
+          "emergencyDraw": {
+            "diff": -3.9266666666666667,
+            "lo": -4.6966772778566845,
+            "hi": -3.156656055476649
+          },
+          "stationDamage": {
+            "diff": 0,
+            "lo": 0,
+            "hi": 0
+          },
+          "catchupOutstanding": {
+            "diff": -0.4166666666666667,
+            "lo": -0.5757493725799703,
+            "hi": -0.25758396075336315
+          },
+          "agreementRoundsOutstanding": {
+            "diff": 0.14,
+            "lo": 0.10066911482780877,
+            "hi": 0.17933088517219126
+          },
+          "agreementDrawCommitted": {
+            "diff": 0.23,
+            "lo": 0.13312521108736633,
+            "hi": 0.32687478891263366
+          }
+        },
+        "wins": {
+          "n": 123,
+          "shareWithHardship": 0.4796747967479675,
+          "shareWithEmptyReserve": 0.8292682926829268,
+          "shareWithObligations": 0.5203252032520326,
+          "mean": {
+            "hardship": 1.8455284552845528,
+            "distressRounds": 0.35772357723577236,
+            "basinHarm": 3.6504065040650406,
+            "destroyed": 2.2845528455284554,
+            "reserveChange": -13.390243902439025,
+            "emptyReserves": 1.1626016260162602,
+            "agreementDraw": 19.146341463414632,
+            "emergencyDraw": 3.5121951219512195,
+            "stationDamage": 0,
+            "catchupOutstanding": 0.7317073170731707,
+            "agreementRoundsOutstanding": 0.2764227642276423,
+            "agreementDrawCommitted": 0.4878048780487805
+          }
+        }
+      },
+      "cooperate loudly": {
+        "legacyWinRate": 0.08333333333333333,
+        "meanEndedRound": 3.986666666666667,
+        "mean": {
+          "hardship": 1.9266666666666667,
+          "distressRounds": 0.5,
+          "basinHarm": 8.3,
+          "destroyed": 2.2066666666666666,
+          "reserveChange": -9.68,
+          "emptyReserves": 0.5466666666666666,
+          "agreementDraw": 17.846666666666668,
+          "emergencyDraw": 3.0633333333333335,
+          "stationDamage": 2.49,
+          "catchupOutstanding": 0.82,
+          "agreementRoundsOutstanding": 0.21,
+          "agreementDrawCommitted": 0.16
+        },
+        "vsNothing": {
+          "hardship": {
+            "diff": 0.7633333333333333,
+            "lo": 0.45762534034803015,
+            "hi": 1.0690413263186365
+          },
+          "distressRounds": {
+            "diff": 0.39666666666666667,
+            "lo": 0.3124015653589362,
+            "hi": 0.48093176797439713
+          },
+          "basinHarm": {
+            "diff": -3.2933333333333334,
+            "lo": -3.726154514669236,
+            "hi": -2.860512151997431
+          },
+          "destroyed": {
+            "diff": -1.9733333333333334,
+            "lo": -2.3685857787872604,
+            "hi": -1.5780808878794064
+          },
+          "reserveChange": {
+            "diff": -10.123333333333333,
+            "lo": -10.98231280546374,
+            "hi": -9.264353861202926
+          },
+          "emptyReserves": {
+            "diff": 0.24666666666666667,
+            "lo": 0.16658401742369197,
+            "hi": 0.3267493159096414
+          },
+          "agreementDraw": {
+            "diff": 17.846666666666668,
+            "lo": 16.733972057958496,
+            "hi": 18.95936127537484
+          },
+          "emergencyDraw": {
+            "diff": -5.596666666666667,
+            "lo": -6.435051100180009,
+            "hi": -4.7582822331533245
+          },
+          "stationDamage": {
+            "diff": 2.49,
+            "lo": 2.362266374577619,
+            "hi": 2.6177336254223813
+          },
+          "catchupOutstanding": {
+            "diff": -0.5533333333333333,
+            "lo": -0.7304090036796965,
+            "hi": -0.37625766298697016
+          },
+          "agreementRoundsOutstanding": {
+            "diff": 0.21,
+            "lo": 0.16291322652439044,
+            "hi": 0.25708677347560954
+          },
+          "agreementDrawCommitted": {
+            "diff": 0.16,
+            "lo": 0.07611099120205647,
+            "hi": 0.24388900879794354
+          }
+        },
+        "wins": {
+          "n": 25,
+          "shareWithHardship": 0,
+          "shareWithEmptyReserve": 0.8,
+          "shareWithObligations": 0.52,
+          "mean": {
+            "hardship": 0,
+            "distressRounds": 0,
+            "basinHarm": 3.12,
+            "destroyed": 0,
+            "reserveChange": -17.6,
+            "emptyReserves": 1.28,
+            "agreementDraw": 25.84,
+            "emergencyDraw": 0,
+            "stationDamage": 0,
+            "catchupOutstanding": 0,
+            "agreementRoundsOutstanding": 0.56,
+            "agreementDrawCommitted": 0.2
+          }
+        }
+      },
+      "listen once, then cooperate": {
+        "legacyWinRate": 0.5133333333333333,
+        "meanEndedRound": 4.86,
+        "mean": {
+          "hardship": 1.46,
+          "distressRounds": 0.32666666666666666,
+          "basinHarm": 8.216666666666667,
+          "destroyed": 2.43,
+          "reserveChange": -7.093333333333334,
+          "emptyReserves": 0.7433333333333333,
+          "agreementDraw": 11.886666666666667,
+          "emergencyDraw": 4.073333333333333,
+          "stationDamage": 0,
+          "catchupOutstanding": 0.7333333333333333,
+          "agreementRoundsOutstanding": 0.6033333333333334,
+          "agreementDrawCommitted": 0.5933333333333334
+        },
+        "vsNothing": {
+          "hardship": {
+            "diff": 0.2966666666666667,
+            "lo": 0.08800907496199362,
+            "hi": 0.5053242583713398
+          },
+          "distressRounds": {
+            "diff": 0.22333333333333333,
+            "lo": 0.1670236249099397,
+            "hi": 0.279643041756727
+          },
+          "basinHarm": {
+            "diff": -3.3766666666666665,
+            "lo": -3.757946385594127,
+            "hi": -2.995386947739206
+          },
+          "destroyed": {
+            "diff": -1.75,
+            "lo": -2.103767989524895,
+            "hi": -1.3962320104751051
+          },
+          "reserveChange": {
+            "diff": -7.536666666666667,
+            "lo": -8.387232740581203,
+            "hi": -6.686100592752131
+          },
+          "emptyReserves": {
+            "diff": 0.44333333333333336,
+            "lo": 0.35455396940827927,
+            "hi": 0.5321126972583874
+          },
+          "agreementDraw": {
+            "diff": 11.886666666666667,
+            "lo": 10.81320731833726,
+            "hi": 12.960126014996073
+          },
+          "emergencyDraw": {
+            "diff": -4.586666666666667,
+            "lo": -5.348186390505528,
+            "hi": -3.825146942827806
+          },
+          "stationDamage": {
+            "diff": 0,
+            "lo": 0,
+            "hi": 0
+          },
+          "catchupOutstanding": {
+            "diff": -0.64,
+            "lo": -0.8067332996790102,
+            "hi": -0.47326670032098983
+          },
+          "agreementRoundsOutstanding": {
+            "diff": 0.6033333333333334,
+            "lo": 0.5237738105450772,
+            "hi": 0.6828928561215896
+          },
+          "agreementDrawCommitted": {
+            "diff": 0.5933333333333334,
+            "lo": 0.43676475643603185,
+            "hi": 0.7499019102306349
+          }
+        },
+        "wins": {
+          "n": 154,
+          "shareWithHardship": 0.4155844155844156,
+          "shareWithEmptyReserve": 0.7467532467532467,
+          "shareWithObligations": 0.8376623376623377,
+          "mean": {
+            "hardship": 1.4285714285714286,
+            "distressRounds": 0.2987012987012987,
+            "basinHarm": 5.532467532467533,
+            "destroyed": 2.0454545454545454,
+            "reserveChange": -11.694805194805195,
+            "emptyReserves": 1.0324675324675325,
+            "agreementDraw": 17.175324675324674,
+            "emergencyDraw": 3.24025974025974,
+            "stationDamage": 0,
+            "catchupOutstanding": 0.44155844155844154,
+            "agreementRoundsOutstanding": 1,
+            "agreementDrawCommitted": 0.9285714285714286
+          }
+        }
+      },
+      "listen before every offer": {
+        "legacyWinRate": 0.31,
+        "meanEndedRound": 4.18,
+        "mean": {
+          "hardship": 1.4166666666666667,
+          "distressRounds": 0.28,
+          "basinHarm": 9.943333333333333,
+          "destroyed": 3.1666666666666665,
+          "reserveChange": -3.276666666666667,
+          "emptyReserves": 0.5366666666666666,
+          "agreementDraw": 6.293333333333333,
+          "emergencyDraw": 5.91,
+          "stationDamage": 0,
+          "catchupOutstanding": 1.1333333333333333,
+          "agreementRoundsOutstanding": 0.2,
+          "agreementDrawCommitted": 0.23666666666666666
+        },
+        "vsNothing": {
+          "hardship": {
+            "diff": 0.25333333333333335,
+            "lo": 0.10865558067434439,
+            "hi": 0.3980110859923223
+          },
+          "distressRounds": {
+            "diff": 0.17666666666666667,
+            "lo": 0.13149870085418724,
+            "hi": 0.2218346324791461
+          },
+          "basinHarm": {
+            "diff": -1.65,
+            "lo": -1.9470433343384705,
+            "hi": -1.3529566656615293
+          },
+          "destroyed": {
+            "diff": -1.0133333333333334,
+            "lo": -1.3109309965824116,
+            "hi": -0.7157356700842552
+          },
+          "reserveChange": {
+            "diff": -3.72,
+            "lo": -4.409121593359824,
+            "hi": -3.030878406640176
+          },
+          "emptyReserves": {
+            "diff": 0.23666666666666666,
+            "lo": 0.1705092992390153,
+            "hi": 0.302824034094318
+          },
+          "agreementDraw": {
+            "diff": 6.293333333333333,
+            "lo": 5.345700091297093,
+            "hi": 7.240966575369573
+          },
+          "emergencyDraw": {
+            "diff": -2.75,
+            "lo": -3.402860642826677,
+            "hi": -2.097139357173323
+          },
+          "stationDamage": {
+            "diff": 0,
+            "lo": 0,
+            "hi": 0
+          },
+          "catchupOutstanding": {
+            "diff": -0.24,
+            "lo": -0.37262725329513136,
+            "hi": -0.10737274670486865
+          },
+          "agreementRoundsOutstanding": {
+            "diff": 0.2,
+            "lo": 0.1493084611890366,
+            "hi": 0.25069153881096345
+          },
+          "agreementDrawCommitted": {
+            "diff": 0.23666666666666666,
+            "lo": 0.13566519782812125,
+            "hi": 0.3376681355052121
+          }
+        },
+        "wins": {
+          "n": 93,
+          "shareWithHardship": 0.44086021505376344,
+          "shareWithEmptyReserve": 0.6881720430107527,
+          "shareWithObligations": 0.7096774193548387,
+          "mean": {
+            "hardship": 1.2903225806451613,
+            "distressRounds": 0.25806451612903225,
+            "basinHarm": 5.67741935483871,
+            "destroyed": 2.2795698924731185,
+            "reserveChange": -9.849462365591398,
+            "emptyReserves": 0.8709677419354839,
+            "agreementDraw": 13.946236559139784,
+            "emergencyDraw": 4,
+            "stationDamage": 0,
+            "catchupOutstanding": 0.7956989247311828,
+            "agreementRoundsOutstanding": 0.5376344086021505,
+            "agreementDrawCommitted": 0.6344086021505376
+          }
+        }
+      },
+      "informed mixed, no listen": {
+        "legacyWinRate": 0.4866666666666667,
+        "meanEndedRound": 5.076666666666667,
+        "mean": {
+          "hardship": 1.8733333333333333,
+          "distressRounds": 0.43,
+          "basinHarm": 7.58,
+          "destroyed": 2.4633333333333334,
+          "reserveChange": -8.246666666666666,
+          "emptyReserves": 0.81,
+          "agreementDraw": 14.413333333333334,
+          "emergencyDraw": 3.7266666666666666,
+          "stationDamage": 1.1166666666666667,
+          "catchupOutstanding": 0.84,
+          "agreementRoundsOutstanding": 0.29,
+          "agreementDrawCommitted": 0.36
+        },
+        "vsNothing": {
+          "hardship": {
+            "diff": 0.71,
+            "lo": 0.43719269356613405,
+            "hi": 0.9828073064338658
+          },
+          "distressRounds": {
+            "diff": 0.32666666666666666,
+            "lo": 0.2532115348146847,
+            "hi": 0.4001217985186486
+          },
+          "basinHarm": {
+            "diff": -4.013333333333334,
+            "lo": -4.448904475380723,
+            "hi": -3.5777621912859447
+          },
+          "destroyed": {
+            "diff": -1.7166666666666666,
+            "lo": -2.0959462493732044,
+            "hi": -1.337387083960129
+          },
+          "reserveChange": {
+            "diff": -8.69,
+            "lo": -9.52413308338818,
+            "hi": -7.855866916611817
+          },
+          "emptyReserves": {
+            "diff": 0.51,
+            "lo": 0.4249323076285964,
+            "hi": 0.5950676923714037
+          },
+          "agreementDraw": {
+            "diff": 14.413333333333334,
+            "lo": 13.320801369793424,
+            "hi": 15.505865296873244
+          },
+          "emergencyDraw": {
+            "diff": -4.933333333333334,
+            "lo": -5.751460500064696,
+            "hi": -4.115206166601971
+          },
+          "stationDamage": {
+            "diff": 1.1166666666666667,
+            "lo": 0.9811332736163361,
+            "hi": 1.2522000597169973
+          },
+          "catchupOutstanding": {
+            "diff": -0.5333333333333333,
+            "lo": -0.706807386494115,
+            "hi": -0.35985928017255164
+          },
+          "agreementRoundsOutstanding": {
+            "diff": 0.29,
+            "lo": 0.23533690579147215,
+            "hi": 0.3446630942085278
+          },
+          "agreementDrawCommitted": {
+            "diff": 0.36,
+            "lo": 0.24127641914489317,
+            "hi": 0.4787235808551068
+          }
+        },
+        "wins": {
+          "n": 146,
+          "shareWithHardship": 0.4383561643835616,
+          "shareWithEmptyReserve": 0.8082191780821918,
+          "shareWithObligations": 0.6095890410958904,
+          "mean": {
+            "hardship": 1.9452054794520548,
+            "distressRounds": 0.4520547945205479,
+            "basinHarm": 4.513698630136986,
+            "destroyed": 1.9931506849315068,
+            "reserveChange": -12.67123287671233,
+            "emptyReserves": 1.0890410958904109,
+            "agreementDraw": 19.301369863013697,
+            "emergencyDraw": 2.6027397260273974,
+            "stationDamage": 0.5958904109589042,
+            "catchupOutstanding": 0.7191780821917808,
+            "agreementRoundsOutstanding": 0.4246575342465753,
+            "agreementDrawCommitted": 0.5821917808219178
+          }
+        }
+      },
+      "informed mixed": {
+        "legacyWinRate": 0.5633333333333334,
+        "meanEndedRound": 4.94,
+        "mean": {
+          "hardship": 1.4833333333333334,
+          "distressRounds": 0.3333333333333333,
+          "basinHarm": 7.98,
+          "destroyed": 2.3266666666666667,
+          "reserveChange": -7.533333333333333,
+          "emptyReserves": 0.76,
+          "agreementDraw": 12.343333333333334,
+          "emergencyDraw": 3.816666666666667,
+          "stationDamage": 0.20333333333333334,
+          "catchupOutstanding": 0.7366666666666667,
+          "agreementRoundsOutstanding": 0.5466666666666666,
+          "agreementDrawCommitted": 0.5333333333333333
+        },
+        "vsNothing": {
+          "hardship": {
+            "diff": 0.32,
+            "lo": 0.08176055326639739,
+            "hi": 0.5582394467336026
+          },
+          "distressRounds": {
+            "diff": 0.23,
+            "lo": 0.16617091802567097,
+            "hi": 0.29382908197432905
+          },
+          "basinHarm": {
+            "diff": -3.6133333333333333,
+            "lo": -4.003424770384313,
+            "hi": -3.2232418962823544
+          },
+          "destroyed": {
+            "diff": -1.8533333333333333,
+            "lo": -2.225006762510279,
+            "hi": -1.4816599041563876
+          },
+          "reserveChange": {
+            "diff": -7.976666666666667,
+            "lo": -8.822492541588613,
+            "hi": -7.13084079174472
+          },
+          "emptyReserves": {
+            "diff": 0.46,
+            "lo": 0.37158721320100124,
+            "hi": 0.5484127867989989
+          },
+          "agreementDraw": {
+            "diff": 12.343333333333334,
+            "lo": 11.277652247665205,
+            "hi": 13.409014419001462
+          },
+          "emergencyDraw": {
+            "diff": -4.843333333333334,
+            "lo": -5.630594219992937,
+            "hi": -4.05607244667373
+          },
+          "stationDamage": {
+            "diff": 0.20333333333333334,
+            "lo": 0.14757392074533124,
+            "hi": 0.25909274592133547
+          },
+          "catchupOutstanding": {
+            "diff": -0.6366666666666667,
+            "lo": -0.8047146184508167,
+            "hi": -0.4686187148825167
+          },
+          "agreementRoundsOutstanding": {
+            "diff": 0.5466666666666666,
+            "lo": 0.47025105173181564,
+            "hi": 0.6230822816015176
+          },
+          "agreementDrawCommitted": {
+            "diff": 0.5333333333333333,
+            "lo": 0.38486874770871476,
+            "hi": 0.6817979189579519
+          }
+        },
+        "wins": {
+          "n": 169,
+          "shareWithHardship": 0.40828402366863903,
+          "shareWithEmptyReserve": 0.7396449704142012,
+          "shareWithObligations": 0.7692307692307693,
+          "mean": {
+            "hardship": 1.5621301775147929,
+            "distressRounds": 0.33727810650887574,
+            "basinHarm": 5.479289940828402,
+            "destroyed": 2.0828402366863905,
+            "reserveChange": -11.57396449704142,
+            "emptyReserves": 0.9822485207100592,
+            "agreementDraw": 16.65680473372781,
+            "emergencyDraw": 3.21301775147929,
+            "stationDamage": 0.22485207100591717,
+            "catchupOutstanding": 0.5976331360946746,
+            "agreementRoundsOutstanding": 0.7988165680473372,
+            "agreementDrawCommitted": 0.7869822485207101
+          }
+        }
+      },
+      "defuse by signal": {
+        "legacyWinRate": 0.43666666666666665,
+        "meanEndedRound": 4.63,
+        "mean": {
+          "hardship": 1.5166666666666666,
+          "distressRounds": 0.3333333333333333,
+          "basinHarm": 7.913333333333333,
+          "destroyed": 2.17,
+          "reserveChange": -7.026666666666666,
+          "emptyReserves": 0.7533333333333333,
+          "agreementDraw": 12.87,
+          "emergencyDraw": 3.4833333333333334,
+          "stationDamage": 0.38333333333333336,
+          "catchupOutstanding": 0.7366666666666667,
+          "agreementRoundsOutstanding": 0.2,
+          "agreementDrawCommitted": 0.3
+        },
+        "vsNothing": {
+          "hardship": {
+            "diff": 0.35333333333333333,
+            "lo": 0.13193385039757424,
+            "hi": 0.5747328162690925
+          },
+          "distressRounds": {
+            "diff": 0.23,
+            "lo": 0.17252598784164627,
+            "hi": 0.2874740121583538
+          },
+          "basinHarm": {
+            "diff": -3.68,
+            "lo": -4.113270835661206,
+            "hi": -3.2467291643387943
+          },
+          "destroyed": {
+            "diff": -2.01,
+            "lo": -2.4079081303245413,
+            "hi": -1.6120918696754583
+          },
+          "reserveChange": {
+            "diff": -7.47,
+            "lo": -8.318149128996028,
+            "hi": -6.621850871003971
+          },
+          "emptyReserves": {
+            "diff": 0.4533333333333333,
+            "lo": 0.36741985668336025,
+            "hi": 0.5392468099833063
+          },
+          "agreementDraw": {
+            "diff": 12.87,
+            "lo": 11.671456298533286,
+            "hi": 14.068543701466712
+          },
+          "emergencyDraw": {
+            "diff": -5.176666666666667,
+            "lo": -6.028818339137498,
+            "hi": -4.324514994195836
+          },
+          "stationDamage": {
+            "diff": 0.38333333333333336,
+            "lo": 0.29057181854920294,
+            "hi": 0.4760948481174638
+          },
+          "catchupOutstanding": {
+            "diff": -0.6366666666666667,
+            "lo": -0.8077454992020139,
+            "hi": -0.4655878341313195
+          },
+          "agreementRoundsOutstanding": {
+            "diff": 0.2,
+            "lo": 0.15190978377755962,
+            "hi": 0.2480902162224404
+          },
+          "agreementDrawCommitted": {
+            "diff": 0.3,
+            "lo": 0.18759882328819488,
+            "hi": 0.4124011767118051
+          }
+        },
+        "wins": {
+          "n": 131,
+          "shareWithHardship": 0.3893129770992366,
+          "shareWithEmptyReserve": 0.8396946564885496,
+          "shareWithObligations": 0.5038167938931297,
+          "mean": {
+            "hardship": 1.4274809160305344,
+            "distressRounds": 0.2824427480916031,
+            "basinHarm": 3.8625954198473282,
+            "destroyed": 1.5190839694656488,
+            "reserveChange": -13.15267175572519,
+            "emptyReserves": 1.16793893129771,
+            "agreementDraw": 19.82442748091603,
+            "emergencyDraw": 2.1603053435114505,
+            "stationDamage": 0.31297709923664124,
+            "catchupOutstanding": 0.4122137404580153,
+            "agreementRoundsOutstanding": 0.3893129770992366,
+            "agreementDrawCommitted": 0.5877862595419847
+          }
+        }
+      },
+      "defuse by strike": {
+        "legacyWinRate": 0.15666666666666668,
+        "meanEndedRound": 3.993333333333333,
+        "mean": {
+          "hardship": 1.4633333333333334,
+          "distressRounds": 0.23666666666666666,
+          "basinHarm": 10.036666666666667,
+          "destroyed": 3.9433333333333334,
+          "reserveChange": -5.083333333333333,
+          "emptyReserves": 0.6133333333333333,
+          "agreementDraw": 8.91,
+          "emergencyDraw": 6.916666666666667,
+          "stationDamage": 1.85,
+          "catchupOutstanding": 1.2233333333333334,
+          "agreementRoundsOutstanding": 0.10666666666666667,
+          "agreementDrawCommitted": 0.15666666666666668
+        },
+        "vsNothing": {
+          "hardship": {
+            "diff": 0.3,
+            "lo": 0.06431614244185199,
+            "hi": 0.535683857558148
+          },
+          "distressRounds": {
+            "diff": 0.13333333333333333,
+            "lo": 0.07033607917127974,
+            "hi": 0.19633058749538693
+          },
+          "basinHarm": {
+            "diff": -1.5566666666666666,
+            "lo": -1.9937145934277245,
+            "hi": -1.1196187399056088
+          },
+          "destroyed": {
+            "diff": -0.23666666666666666,
+            "lo": -0.6735264082672054,
+            "hi": 0.2001930749338721
+          },
+          "reserveChange": {
+            "diff": -5.526666666666666,
+            "lo": -6.396751323157726,
+            "hi": -4.656582010175606
+          },
+          "emptyReserves": {
+            "diff": 0.31333333333333335,
+            "lo": 0.22837227105591523,
+            "hi": 0.3982943956107515
+          },
+          "agreementDraw": {
+            "diff": 8.91,
+            "lo": 7.70591908648645,
+            "hi": 10.11408091351355
+          },
+          "emergencyDraw": {
+            "diff": -1.7433333333333334,
+            "lo": -2.6206347519041597,
+            "hi": -0.8660319147625072
+          },
+          "stationDamage": {
+            "diff": 1.85,
+            "lo": 1.6937239243608662,
+            "hi": 2.0062760756391342
+          },
+          "catchupOutstanding": {
+            "diff": -0.15,
+            "lo": -0.3396985932967709,
+            "hi": 0.03969859329677089
+          },
+          "agreementRoundsOutstanding": {
+            "diff": 0.10666666666666667,
+            "lo": 0.07167685469721796,
+            "hi": 0.14165647863611538
+          },
+          "agreementDrawCommitted": {
+            "diff": 0.15666666666666668,
+            "lo": 0.07398177242706362,
+            "hi": 0.23935156090626974
+          }
+        },
+        "wins": {
+          "n": 47,
+          "shareWithHardship": 0.10638297872340426,
+          "shareWithEmptyReserve": 0.8297872340425532,
+          "shareWithObligations": 0.5106382978723404,
+          "mean": {
+            "hardship": 0.2553191489361702,
+            "distressRounds": 0.10638297872340426,
+            "basinHarm": 3,
+            "destroyed": 0.2553191489361702,
+            "reserveChange": -16.76595744680851,
+            "emptyReserves": 1.2553191489361701,
+            "agreementDraw": 24.617021276595743,
+            "emergencyDraw": 0.2765957446808511,
+            "stationDamage": 0.1702127659574468,
+            "catchupOutstanding": 0.19148936170212766,
+            "agreementRoundsOutstanding": 0.44680851063829785,
+            "agreementDrawCommitted": 0.7446808510638298
+          }
+        }
+      },
+      "defuse: signal, else strike": {
+        "legacyWinRate": 0.21333333333333335,
+        "meanEndedRound": 4.333333333333333,
+        "mean": {
+          "hardship": 1.2266666666666666,
+          "distressRounds": 0.28,
+          "basinHarm": 9.136666666666667,
+          "destroyed": 2.9833333333333334,
+          "reserveChange": -6.743333333333333,
+          "emptyReserves": 0.6466666666666666,
+          "agreementDraw": 12.063333333333333,
+          "emergencyDraw": 5.14,
+          "stationDamage": 2.05,
+          "catchupOutstanding": 0.88,
+          "agreementRoundsOutstanding": 0.21333333333333335,
+          "agreementDrawCommitted": 0.2833333333333333
+        },
+        "vsNothing": {
+          "hardship": {
+            "diff": 0.06333333333333334,
+            "lo": -0.14483107286386498,
+            "hi": 0.27149773953053163
+          },
+          "distressRounds": {
+            "diff": 0.17666666666666667,
+            "lo": 0.11200210740254204,
+            "hi": 0.2413312259307913
+          },
+          "basinHarm": {
+            "diff": -2.4566666666666666,
+            "lo": -2.895006179388517,
+            "hi": -2.018327153944816
+          },
+          "destroyed": {
+            "diff": -1.1966666666666668,
+            "lo": -1.624972507583017,
+            "hi": -0.7683608257503165
+          },
+          "reserveChange": {
+            "diff": -7.1866666666666665,
+            "lo": -8.047814976244531,
+            "hi": -6.325518357088802
+          },
+          "emptyReserves": {
+            "diff": 0.3466666666666667,
+            "lo": 0.26185696331712605,
+            "hi": 0.4314763700162073
+          },
+          "agreementDraw": {
+            "diff": 12.063333333333333,
+            "lo": 10.871744335507373,
+            "hi": 13.254922331159293
+          },
+          "emergencyDraw": {
+            "diff": -3.52,
+            "lo": -4.40235512236406,
+            "hi": -2.63764487763594
+          },
+          "stationDamage": {
+            "diff": 2.05,
+            "lo": 1.90044564154947,
+            "hi": 2.1995543584505297
+          },
+          "catchupOutstanding": {
+            "diff": -0.49333333333333335,
+            "lo": -0.6851353023087883,
+            "hi": -0.3015313643578784
+          },
+          "agreementRoundsOutstanding": {
+            "diff": 0.21333333333333335,
+            "lo": 0.1616600010053725,
+            "hi": 0.26500666566129416
+          },
+          "agreementDrawCommitted": {
+            "diff": 0.2833333333333333,
+            "lo": 0.17325822637761978,
+            "hi": 0.39340844028904687
+          }
+        },
+        "wins": {
+          "n": 64,
+          "shareWithHardship": 0.046875,
+          "shareWithEmptyReserve": 0.84375,
+          "shareWithObligations": 0.515625,
+          "mean": {
+            "hardship": 0.109375,
+            "distressRounds": 0.046875,
+            "basinHarm": 3.6875,
+            "destroyed": 0.09375,
+            "reserveChange": -15.3125,
+            "emptyReserves": 1.1875,
+            "agreementDraw": 24,
+            "emergencyDraw": 0.078125,
+            "stationDamage": 0.390625,
+            "catchupOutstanding": 0.09375,
+            "agreementRoundsOutstanding": 0.53125,
+            "agreementDrawCommitted": 0.65625
+          }
+        }
+      },
+      "guard: strike threats only": {
+        "legacyWinRate": 0.02666666666666667,
+        "meanEndedRound": 3.493333333333333,
+        "mean": {
+          "hardship": 0.9333333333333333,
+          "distressRounds": 0.03,
+          "basinHarm": 12.346666666666666,
+          "destroyed": 4.726666666666667,
+          "reserveChange": 0.29,
+          "emptyReserves": 0.24333333333333335,
+          "agreementDraw": 0,
+          "emergencyDraw": 9.343333333333334,
+          "stationDamage": 2,
+          "catchupOutstanding": 1.3366666666666667,
+          "agreementRoundsOutstanding": 0,
+          "agreementDrawCommitted": 0
+        },
+        "vsNothing": {
+          "hardship": {
+            "diff": -0.23,
+            "lo": -0.373545991216066,
+            "hi": -0.086454008783934
+          },
+          "distressRounds": {
+            "diff": -0.07333333333333333,
+            "lo": -0.1117089077525257,
+            "hi": -0.034957758914140956
+          },
+          "basinHarm": {
+            "diff": 0.7533333333333333,
+            "lo": 0.5203225131897695,
+            "hi": 0.9863441534768971
+          },
+          "destroyed": {
+            "diff": 0.5466666666666666,
+            "lo": 0.2251084108728003,
+            "hi": 0.868224922460533
+          },
+          "reserveChange": {
+            "diff": -0.15333333333333332,
+            "lo": -0.45100294275474456,
+            "hi": 0.14433627608807792
+          },
+          "emptyReserves": {
+            "diff": -0.056666666666666664,
+            "lo": -0.10821137387626217,
+            "hi": -0.005121959457071147
+          },
+          "agreementDraw": {
+            "diff": 0,
+            "lo": 0,
+            "hi": 0
+          },
+          "emergencyDraw": {
+            "diff": 0.6833333333333333,
+            "lo": 0.032224355109567004,
+            "hi": 1.3344423115570998
+          },
+          "stationDamage": {
+            "diff": 2,
+            "lo": 1.8473631834374629,
+            "hi": 2.152636816562537
+          },
+          "catchupOutstanding": {
+            "diff": -0.03666666666666667,
+            "lo": -0.19078293236212718,
+            "hi": 0.11744959902879386
+          },
+          "agreementRoundsOutstanding": {
+            "diff": 0,
+            "lo": 0,
+            "hi": 0
+          },
+          "agreementDrawCommitted": {
+            "diff": 0,
+            "lo": 0,
+            "hi": 0
+          }
+        },
+        "wins": {
+          "n": 8,
+          "shareWithHardship": 0,
+          "shareWithEmptyReserve": 0.125,
+          "shareWithObligations": 0.25,
+          "mean": {
+            "hardship": 0,
+            "distressRounds": 0,
+            "basinHarm": 6.625,
+            "destroyed": 1,
+            "reserveChange": 0.875,
+            "emptyReserves": 0.125,
+            "agreementDraw": 0,
+            "emergencyDraw": 2.125,
+            "stationDamage": 0.5,
+            "catchupOutstanding": 0.625,
+            "agreementRoundsOutstanding": 0,
+            "agreementDrawCommitted": 0
+          }
+        }
+      },
+      "shield the threatened": {
+        "legacyWinRate": 0.15333333333333332,
+        "meanEndedRound": 4.173333333333333,
+        "mean": {
+          "hardship": 4.23,
+          "distressRounds": 0.69,
+          "basinHarm": 10.01,
+          "destroyed": 5.6866666666666665,
+          "reserveChange": -4.23,
+          "emptyReserves": 0.58,
+          "agreementDraw": 7.493333333333333,
+          "emergencyDraw": 8.026666666666667,
+          "stationDamage": 1.7333333333333334,
+          "catchupOutstanding": 1.2533333333333334,
+          "agreementRoundsOutstanding": 0.08,
+          "agreementDrawCommitted": 0.12
+        },
+        "vsNothing": {
+          "hardship": {
+            "diff": 3.066666666666667,
+            "lo": 2.692288307644408,
+            "hi": 3.4410450256889256
+          },
+          "distressRounds": {
+            "diff": 0.5866666666666667,
+            "lo": 0.5095814444113449,
+            "hi": 0.6637518889219884
+          },
+          "basinHarm": {
+            "diff": -1.5833333333333333,
+            "lo": -1.976038292163377,
+            "hi": -1.1906283745032895
+          },
+          "destroyed": {
+            "diff": 1.5066666666666666,
+            "lo": 1.0582548678196417,
+            "hi": 1.9550784655136915
+          },
+          "reserveChange": {
+            "diff": -4.673333333333333,
+            "lo": -5.45547346096351,
+            "hi": -3.8911932057031557
+          },
+          "emptyReserves": {
+            "diff": 0.28,
+            "lo": 0.21059392204833055,
+            "hi": 0.3494060779516695
+          },
+          "agreementDraw": {
+            "diff": 7.493333333333333,
+            "lo": 6.359968567659959,
+            "hi": 8.626698099006708
+          },
+          "emergencyDraw": {
+            "diff": -0.6333333333333333,
+            "lo": -1.4003703744016678,
+            "hi": 0.13370370773500118
+          },
+          "stationDamage": {
+            "diff": 1.7333333333333334,
+            "lo": 1.5845805599532812,
+            "hi": 1.8820861067133856
+          },
+          "catchupOutstanding": {
+            "diff": -0.12,
+            "lo": -0.2636280145207889,
+            "hi": 0.023628014520788887
+          },
+          "agreementRoundsOutstanding": {
+            "diff": 0.08,
+            "lo": 0.049248990010332755,
+            "hi": 0.11075100998966725
+          },
+          "agreementDrawCommitted": {
+            "diff": 0.12,
+            "lo": 0.0496135616589308,
+            "hi": 0.1903864383410692
+          }
+        },
+        "wins": {
+          "n": 46,
+          "shareWithHardship": 0.08695652173913043,
+          "shareWithEmptyReserve": 0.8478260869565217,
+          "shareWithObligations": 0.5217391304347826,
+          "mean": {
+            "hardship": 0.45652173913043476,
+            "distressRounds": 0.10869565217391304,
+            "basinHarm": 3.0217391304347827,
+            "destroyed": 0.4782608695652174,
+            "reserveChange": -16.5,
+            "emptyReserves": 1.2608695652173914,
+            "agreementDraw": 24.217391304347824,
+            "emergencyDraw": 0.4782608695652174,
+            "stationDamage": 0.13043478260869565,
+            "catchupOutstanding": 0.2608695652173913,
+            "agreementRoundsOutstanding": 0.43478260869565216,
+            "agreementDrawCommitted": 0.7608695652173914
+          }
+        }
+      },
+      "listen, then reveal": {
+        "legacyWinRate": 0.31333333333333335,
+        "meanEndedRound": 4.39,
+        "mean": {
+          "hardship": 2.013333333333333,
+          "distressRounds": 0.36333333333333334,
+          "basinHarm": 9.923333333333334,
+          "destroyed": 3.42,
+          "reserveChange": -4.046666666666667,
+          "emptyReserves": 0.53,
+          "agreementDraw": 7.23,
+          "emergencyDraw": 5.496666666666667,
+          "stationDamage": 1.14,
+          "catchupOutstanding": 0.96,
+          "agreementRoundsOutstanding": 0.31,
+          "agreementDrawCommitted": 0.37333333333333335
+        },
+        "vsNothing": {
+          "hardship": {
+            "diff": 0.85,
+            "lo": 0.6152948907792709,
+            "hi": 1.0847051092207292
+          },
+          "distressRounds": {
+            "diff": 0.26,
+            "lo": 0.20457828122541985,
+            "hi": 0.31542171877458014
+          },
+          "basinHarm": {
+            "diff": -1.67,
+            "lo": -2.0291791541127684,
+            "hi": -1.3108208458872315
+          },
+          "destroyed": {
+            "diff": -0.76,
+            "lo": -1.1898690313110116,
+            "hi": -0.3301309686889884
+          },
+          "reserveChange": {
+            "diff": -4.49,
+            "lo": -5.178888189875097,
+            "hi": -3.8011118101249037
+          },
+          "emptyReserves": {
+            "diff": 0.23,
+            "lo": 0.1603936688382972,
+            "hi": 0.2996063311617028
+          },
+          "agreementDraw": {
+            "diff": 7.23,
+            "lo": 6.189832145181155,
+            "hi": 8.270167854818846
+          },
+          "emergencyDraw": {
+            "diff": -3.1633333333333336,
+            "lo": -4.049130726150821,
+            "hi": -2.2775359405158455
+          },
+          "stationDamage": {
+            "diff": 1.14,
+            "lo": 0.9887556116190672,
+            "hi": 1.2912443883809326
+          },
+          "catchupOutstanding": {
+            "diff": -0.41333333333333333,
+            "lo": -0.5887810706362464,
+            "hi": -0.23788559603042025
+          },
+          "agreementRoundsOutstanding": {
+            "diff": 0.31,
+            "lo": 0.24785719040115461,
+            "hi": 0.3721428095988454
+          },
+          "agreementDrawCommitted": {
+            "diff": 0.37333333333333335,
+            "lo": 0.24844499976980555,
+            "hi": 0.49822166689686115
+          }
+        },
+        "wins": {
+          "n": 94,
+          "shareWithHardship": 0.4148936170212766,
+          "shareWithEmptyReserve": 0.6382978723404256,
+          "shareWithObligations": 0.7978723404255319,
+          "mean": {
+            "hardship": 1.3936170212765957,
+            "distressRounds": 0.3191489361702128,
+            "basinHarm": 5.670212765957447,
+            "destroyed": 1.851063829787234,
+            "reserveChange": -10.670212765957446,
+            "emptyReserves": 0.8829787234042553,
+            "agreementDraw": 15.01063829787234,
+            "emergencyDraw": 2.9361702127659575,
+            "stationDamage": 0.44680851063829785,
+            "catchupOutstanding": 0.6702127659574468,
+            "agreementRoundsOutstanding": 0.7553191489361702,
+            "agreementDrawCommitted": 0.8829787234042553
+          }
+        }
+      },
+      "random (mean of 20)": {
+        "legacyWinRate": 0.0573333333333337,
+        "meanEndedRound": 3.65716666666676,
+        "mean": {
+          "hardship": 1.9666666666666655,
+          "distressRounds": 0.3138333333333334,
+          "basinHarm": 11.552833333333332,
+          "destroyed": 5.63633333333333,
+          "reserveChange": -3.805499999999998,
+          "emptyReserves": 0.4531666666666666,
+          "agreementDraw": 6.134333333333336,
+          "emergencyDraw": 10.266333333333334,
+          "stationDamage": 2.3233333333333346,
+          "catchupOutstanding": 1.2086666666666679,
+          "agreementRoundsOutstanding": 0.12800000000000003,
+          "agreementDrawCommitted": 0.19216666666666662
+        },
+        "vsNothing": {
+          "hardship": {
+            "diff": 0.8033333333333331,
+            "lo": 0.7350370528714003,
+            "hi": 0.8716296137952659
+          },
+          "distressRounds": {
+            "diff": 0.21050000000000013,
+            "lo": 0.19162415053038545,
+            "hi": 0.2293758494696148
+          },
+          "basinHarm": {
+            "diff": -0.040499999999999384,
+            "lo": -0.2319928847576856,
+            "hi": 0.1509928847576868
+          },
+          "destroyed": {
+            "diff": 1.4563333333333341,
+            "lo": 1.2878760413334183,
+            "hi": 1.62479062533325
+          },
+          "reserveChange": {
+            "diff": -4.248833333333331,
+            "lo": -4.610601441080723,
+            "hi": -3.8870652255859386
+          },
+          "emptyReserves": {
+            "diff": 0.1531666666666667,
+            "lo": 0.12156431588223623,
+            "hi": 0.18476901745109717
+          },
+          "agreementDraw": {
+            "diff": 6.134333333333336,
+            "lo": 5.699249429353152,
+            "hi": 6.56941723731352
+          },
+          "emergencyDraw": {
+            "diff": 1.6063333333333332,
+            "lo": 1.235673489681269,
+            "hi": 1.9769931769853972
+          },
+          "stationDamage": {
+            "diff": 2.3233333333333346,
+            "lo": 2.252210958644738,
+            "hi": 2.394455708021931
+          },
+          "catchupOutstanding": {
+            "diff": -0.164666666666667,
+            "lo": -0.24243742954021638,
+            "hi": -0.0868959037931176
+          },
+          "agreementRoundsOutstanding": {
+            "diff": 0.12800000000000003,
+            "lo": 0.11118777330832655,
+            "hi": 0.1448122266916735
+          },
+          "agreementDrawCommitted": {
+            "diff": 0.19216666666666662,
+            "lo": 0.15967916927790318,
+            "hi": 0.22465416405543007
+          }
+        },
+        "wins": {
+          "n": 17.20000000000011,
+          "shareWithHardship": 0.5755813953488339,
+          "shareWithEmptyReserve": 0.6598837209302298,
+          "shareWithObligations": 0.7412790697674398,
+          "mean": {
+            "hardship": 1.473837209302317,
+            "distressRounds": 0.2645348837209282,
+            "basinHarm": 6.22965116279066,
+            "destroyed": 3.747093023255797,
+            "reserveChange": -11.581395348837143,
+            "emptyReserves": 0.9244186046511585,
+            "agreementDraw": 14.526162790697569,
+            "emergencyDraw": 6.77906976744182,
+            "stationDamage": 0.9476744186046443,
+            "catchupOutstanding": 1.4825581395348717,
+            "agreementRoundsOutstanding": 0.47383720930232165,
+            "agreementDrawCommitted": 0.7645348837209253
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "note": "Offensive-action comparison: endings by policy, G1b threat rule, seeds 1-300. Shared Dawn uses the provisional placeholder threshold.",
+  "rows": [
+    {
+      "mode": "strike",
+      "bot": "cooperate, hide when exposed",
+      "survive": 0.41,
+      "sharedDawn": 0.29,
+      "lostStation": 0,
+      "lostBasin": 0.59,
+      "distressRounds": 0.3566666666666667
+    },
+    {
+      "mode": "strike",
+      "bot": "defuse by signal",
+      "survive": 0.43666666666666665,
+      "sharedDawn": 0.3333333333333333,
+      "lostStation": 0.02,
+      "lostBasin": 0.5433333333333333,
+      "distressRounds": 0.3333333333333333
+    },
+    {
+      "mode": "strike",
+      "bot": "defuse by strike",
+      "survive": 0.15666666666666668,
+      "sharedDawn": 0.14,
+      "lostStation": 0.37666666666666665,
+      "lostBasin": 0.6433333333333333,
+      "distressRounds": 0.23666666666666666
+    },
+    {
+      "mode": "jam",
+      "bot": "defuse by strike",
+      "survive": 0.15333333333333332,
+      "sharedDawn": 0.15333333333333332,
+      "lostStation": 0.22666666666666666,
+      "lostBasin": 0.6966666666666667,
+      "distressRounds": 0.12
+    },
+    {
+      "mode": "jam-soft",
+      "bot": "defuse by strike",
+      "survive": 0.15333333333333332,
+      "sharedDawn": 0.15333333333333332,
+      "lostStation": 0.22666666666666666,
+      "lostBasin": 0.6933333333333334,
+      "distressRounds": 0.12333333333333334
+    },
+    {
+      "mode": "shield",
+      "bot": "shield the threatened",
+      "survive": 0.16333333333333333,
+      "sharedDawn": 0.16333333333333333,
+      "lostStation": 0.17,
+      "lostBasin": 0.7233333333333334,
+      "distressRounds": 0.13333333333333333
+    },
+    {
+      "mode": "reveal",
+      "bot": "listen, then reveal",
+      "survive": 0.3933333333333333,
+      "sharedDawn": 0.32,
+      "lostStation": 0.05,
+      "lostBasin": 0.56,
+      "distressRounds": 0.17
+    }
+  ]
+}

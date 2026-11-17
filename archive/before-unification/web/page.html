@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Dark Microcosmos</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400..700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root {
+  /* One visual world, dark by choice: an instrument panel in a void.
+     Layout: status strip, the ring, the choice, then the record of what happened. */
+  --void: #05060B;
+  --panel: #0C0E17;
+  --rule: #272B40;
+  --ink: #ECE6D8;
+  --dim: #A7A1B8;
+  --signal: #E4AE60;
+  --life: #77C8D7;
+  --strike: #F0526E;
+  --core: #FFF4F0;
+  --display: 'Bodoni Moda', 'Didot', 'Bodoni MT', Georgia, serif;
+  --body: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mono: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--void); color: var(--ink); font: 400 15px/1.5 var(--body); -webkit-text-size-adjust: 100%; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--life); outline-offset: 3px; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 20px 16px 56px; display: grid; gap: 20px; }
+
+header.top { display: flex; flex-wrap: wrap; align-items: end; gap: 10px 20px; border-bottom: 1px solid var(--rule); padding-bottom: 14px; }
+.eyebrow { margin: 0 0 4px; font: 500 11px/1.3 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--dim); }
+h1 { margin: 0; font: 500 clamp(28px, 6vw, 44px)/1 var(--display); letter-spacing: -.01em; text-wrap: balance; }
+h1 span { color: var(--signal); font-style: normal; }
+.brief { margin: 8px 0 0; max-width: 62ch; color: var(--dim); }
+.top .grow { flex: 1 1 320px; }
+.top .tools { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+#world { font: 500 12px var(--mono); color: var(--dim); letter-spacing: .06em; margin-right: 4px; }
+.plain { background: transparent; border: 1px solid var(--rule); border-radius: 2px; padding: 8px 12px; cursor: pointer; font: 500 13px var(--body); }
+.plain:hover { border-color: var(--dim); }
+.plain.strong { border-color: var(--signal); color: var(--signal); }
+a.plain { text-decoration: none; display: inline-block; color: var(--life); border-color: var(--life); }
+
+.cols { display: grid; gap: 20px; }
+@media (min-width: 940px) { .cols { grid-template-columns: minmax(0, 500px) minmax(0, 1fr); align-items: start; } .left { position: sticky; top: 12px; } }
+.left, .right { display: grid; gap: 16px; min-width: 0; }
+
+#status { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+@media (min-width: 520px) { #status { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.stat { background: var(--panel); padding: 10px 12px; display: grid; gap: 4px; align-content: start; }
+.lab { font: 500 10.5px/1.2 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--dim); }
+.val { font: 500 19px/1.1 var(--mono); font-variant-numeric: tabular-nums; }
+.val small { font-size: 11px; color: var(--dim); font-weight: 400; }
+.val.bad { color: var(--strike); }
+.note { font-size: 12px; color: var(--dim); }
+.pips { display: flex; gap: 4px; }
+.pip { width: 14px; height: 6px; border: 1px solid var(--dim); display: block; }
+.pip.on.r { background: var(--ink); border-color: var(--ink); }
+.pip.on.g { background: var(--life); border-color: var(--life); }
+.pip.on.e { background: var(--signal); border-color: var(--signal); }
+.pip.mark { margin-left: 6px; position: relative; }
+.pip.mark::before { content: ''; position: absolute; left: -6px; top: -4px; bottom: -4px; border-left: 1px dashed var(--strike); }
+
+#ring { position: relative; width: 100%; max-width: 500px; margin: 0 auto; aspect-ratio: 1; }
+#ring svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.orbit { fill: none; stroke: var(--signal); stroke-width: .25; opacity: .55; }
+.orbit.faint { stroke: var(--dim); opacity: .28; stroke-dasharray: .4 1.4; }
+.station { fill: var(--signal); }
+.station-halo { fill: none; stroke: var(--signal); stroke-width: .3; opacity: .7; }
+.station-label { position: absolute; left: 50%; top: 50%; transform: translate(-50%, 16px); font: 500 10px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--dim); pointer-events: none; }
+#ring line { animation: arrive .35s ease-out both; }
+@keyframes arrive { from { opacity: 0; } to { opacity: 1; } }
+.l-threat { stroke: var(--strike); stroke-width: .7; stroke-dasharray: 2 1.6; fill: none; }
+.l-strike { stroke: var(--strike); stroke-width: 1.3; }
+.l-core { stroke: var(--core); stroke-width: .35; }
+.l-offer { stroke: var(--signal); stroke-width: .7; stroke-dasharray: .1 1.5; stroke-linecap: round; }
+.l-listen { stroke: var(--life); stroke-width: .45; stroke-dasharray: 3 1; }
+.mk-strike { fill: var(--strike); }
+.mk-threat { fill: none; stroke: var(--strike); stroke-width: 1.6; }
+.mk-offer { fill: var(--signal); }
+
+.node { position: absolute; transform: translate(-50%, -50%); width: clamp(58px, 18%, 92px); aspect-ratio: 1; border-radius: 50%; background: var(--panel); border: 1px solid var(--dim); cursor: pointer; display: grid; place-content: center; justify-items: center; gap: 1px; padding: 0; }
+.node b { font: 500 clamp(19px, 5vw, 27px)/1 var(--display); }
+.node em { font: 400 10px/1.1 var(--mono); font-style: normal; color: var(--dim); letter-spacing: .04em; }
+.node:hover:not(:disabled) { border-color: var(--ink); }
+.node:disabled { cursor: default; }
+.node.sel { border-color: var(--ink); box-shadow: 0 0 0 3px var(--void), 0 0 0 5px var(--ink); }
+.node.agree { border: 3px double var(--signal); }
+.node.threatened { outline: 2px dashed var(--strike); outline-offset: 5px; }
+.node.threatening { border-style: dashed; border-color: var(--strike); }
+.flag { position: absolute; right: -2px; top: -2px; width: 19px; height: 19px; border-radius: 50%; background: var(--strike); color: var(--void); font: 600 12px/19px var(--mono); text-align: center; }
+.bars { display: inline-flex; align-items: end; gap: 2px; height: 11px; }
+.bars i { width: 4px; border: 1px solid var(--dim); display: block; }
+.bars i:nth-child(1) { height: 5px; } .bars i:nth-child(2) { height: 8px; } .bars i:nth-child(3) { height: 11px; }
+.bars i.on { background: var(--ink); border-color: var(--ink); }
+
+.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; margin: 0; padding: 0; list-style: none; font-size: 12px; color: var(--dim); justify-content: center; }
+.legend li { display: inline-flex; align-items: center; gap: 6px; }
+.legend svg { width: 26px; height: 8px; overflow: visible; }
+.legend .ring2 { width: 12px; height: 12px; border-radius: 50%; border: 3px double var(--signal); display: inline-block; }
+.legend .bang { width: 13px; height: 13px; border-radius: 50%; background: var(--strike); color: var(--void); font: 600 9px/13px var(--mono); text-align: center; display: inline-block; }
+
+.prompt { margin: 0; padding: 10px 12px; border-left: 2px solid var(--rule); color: var(--dim); min-height: 2.6em; }
+.prompt.alert { border-left: 2px dashed var(--strike); color: var(--ink); background: var(--panel); }
+#actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.act { text-align: left; background: var(--panel); border: 1px solid var(--rule); border-radius: 2px; padding: 10px 12px; cursor: pointer; display: grid; grid-template-columns: auto 1fr; gap: 2px 10px; align-items: baseline; }
+.act .k { grid-row: span 2; font: 500 11px var(--mono); border: 1px solid var(--dim); padding: 1px 5px; color: var(--dim); align-self: start; margin-top: 2px; }
+.act .t { font: 600 15px var(--body); }
+.act .h { font-size: 12px; color: var(--dim); }
+.act:hover:not(:disabled) { border-color: var(--ink); }
+.act:disabled { opacity: .45; cursor: not-allowed; }
+.a-listen:not(:disabled) { border-bottom: 2px solid var(--life); }
+.a-signal:not(:disabled) { border-bottom: 2px dotted var(--signal); }
+.a-strike:not(:disabled) { border-bottom: 2px solid var(--strike); }
+.a-hide { border-bottom: 2px solid var(--dim); }
+
+h2.sec { margin: 0 0 8px; font: 500 11px/1.3 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--dim); }
+.scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th, td { text-align: left; vertical-align: top; padding: 7px 10px 7px 0; border-top: 1px solid var(--rule); }
+thead th { font: 500 10.5px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--dim); border-top: 0; }
+tbody th { font: 500 18px/1 var(--display); width: 2ch; }
+.num { font-family: var(--mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.none { color: var(--dim); }
+.now { font: 400 11px var(--mono); color: var(--dim); }
+.trail { display: inline-flex; align-items: end; gap: 2px; height: 12px; vertical-align: -1px; }
+.trail i { width: 5px; display: block; background: var(--ink); }
+.trail .b0 { height: 4px; opacity: .55; } .trail .b1 { height: 8px; opacity: .8; } .trail .b2 { height: 12px; }
+
+#log { display: grid; gap: 12px; }
+.rd h3 { margin: 0 0 4px; font: 500 13px var(--mono); color: var(--signal); letter-spacing: .04em; }
+.rd ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 3px; max-width: 68ch; }
+.rd li { display: grid; grid-template-columns: 1.4em 1fr; }
+.rd li span { font-family: var(--mono); color: var(--dim); }
+.rd li.you { color: var(--ink); font-weight: 500; }
+.rd li.calm { color: var(--dim); }
+.rd li.warn span, .rd li.harm span, .rd li.basin span { color: var(--strike); }
+.rd li.harm, .rd li.basin, .rd li.warn { color: var(--ink); }
+
+.ending { border: 1px solid var(--rule); background: var(--panel); padding: 18px 16px; display: grid; gap: 10px; }
+.ending h2 { margin: 0; font: 500 clamp(30px, 7vw, 46px)/1 var(--display); text-wrap: balance; }
+.ending.shared-dawn { border-top: 3px solid var(--signal); } .ending.shared-dawn h2 { color: var(--signal); }
+.ending.fragile-peace { border-top: 3px double var(--life); } .ending.fragile-peace h2 { color: var(--life); }
+.ending.long-night { border-top: 3px dashed var(--strike); }
+.ending h3 { margin: 8px 0 0; font: 500 11px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--dim); }
+.why { margin: 0; font-size: 16px; max-width: 60ch; }
+.detail { margin: 0; padding-left: 1.1em; display: grid; gap: 3px; color: var(--dim); max-width: 66ch; }
+.code { margin: 4px 0 0; display: grid; gap: 4px; }
+.code span { font: 500 10.5px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--dim); }
+code, textarea { font: 400 12px/1.5 var(--mono); color: var(--ink); overflow-wrap: anywhere; }
+textarea { width: 100%; background: var(--void); border: 1px solid var(--rule); padding: 8px; margin: 8px 0; resize: vertical; }
+.again { display: flex; gap: 8px; flex-wrap: wrap; }
+.tally { margin: 0; font-size: 12.5px; color: var(--dim); }
+details { border-top: 1px solid var(--rule); padding-top: 10px; }
+summary { cursor: pointer; font: 500 13px var(--body); }
+.how { display: grid; gap: 8px; max-width: 66ch; color: var(--dim); margin-top: 10px; }
+.how p { margin: 0; } .how b { color: var(--ink); font-weight: 600; }
+footer { color: var(--dim); font-size: 12px; border-top: 1px solid var(--rule); padding-top: 12px; max-width: 76ch; }
+[hidden] { display: none !important; }
+@media (prefers-reduced-motion: reduce) { #ring line { animation: none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="grow">
+      <p class="eyebrow">Playable prototype G1.5 · rules provisional</p>
+      <h1>The Dark <span>Microcosmos</span></h1>
+      <p class="brief">Six districts draw from one river. The Seventh Basin lives on what is left. You run a listening station. Survive six rounds and keep the basin alive. The best ending is to do it with no district going short.</p>
+    </div>
+    <div class="tools"><a class="plain link3d" href="../">See the 3D world</a><span id="world"></span><button type="button" id="restart" class="plain">Start over</button><button type="button" id="new" class="plain strong">New world</button></div>
+  </header>
+
+  <div class="cols">
+    <div class="left">
+      <div id="status" aria-live="polite"></div>
+      <div id="ring" role="group" aria-label="The six districts"></div>
+      <ul class="legend" aria-label="Key">
+        <li><svg viewBox="0 0 26 8"><line x1="1" y1="4" x2="25" y2="4" stroke="#F0526E" stroke-width="1.6" stroke-dasharray="4 3"/></svg>threat</li>
+        <li><svg viewBox="0 0 26 8"><line x1="1" y1="4" x2="25" y2="4" stroke="#F0526E" stroke-width="3"/><line x1="1" y1="4" x2="25" y2="4" stroke="#FFF4F0" stroke-width="1"/></svg>strike</li>
+        <li><svg viewBox="0 0 26 8"><line x1="1" y1="4" x2="25" y2="4" stroke="#E4AE60" stroke-width="2" stroke-dasharray="0.1 4" stroke-linecap="round"/></svg>offer</li>
+        <li><svg viewBox="0 0 26 8"><line x1="1" y1="4" x2="25" y2="4" stroke="#77C8D7" stroke-width="1.2" stroke-dasharray="6 2"/></svg>listen</li>
+        <li><span class="ring2"></span>agreement</li>
+        <li><span class="bang">!</span>distress</li>
+      </ul>
+      <p id="prompt" class="prompt" aria-live="polite"></p>
+      <div id="actions"></div>
+    </div>
+
+    <div class="right">
+      <section id="ending" class="ending" aria-labelledby="ending-title" hidden></section>
+      <section aria-labelledby="h-log"><h2 class="sec" id="h-log">What happened</h2><div id="log"></div></section>
+      <section aria-labelledby="h-book"><h2 class="sec" id="h-book">Station notebook</h2>
+        <div class="scroll"><table><thead><tr><th>District</th><th>Draw by round</th><th>What you know</th></tr></thead><tbody id="notebook"></tbody></table></div>
+      </section>
+      <details>
+        <summary>How it works</summary>
+        <div class="how">
+          <p><b>Each round you take one action.</b> Pick a district, then listen, signal or strike. Or hide. Keys: A to F pick a district; L, S, K, H act.</p>
+          <p><b>You see what districts do, not why.</b> Each shows a low, medium or heavy draw from the river. Heavy can mean greed or real need. Listening tells you which.</p>
+          <p><b>Signal</b> asks a district to live on its reserve for two rounds. It may agree, decline, or have too little stored. <b>Strike</b> stops a district acting on the network for one round, which can stop a threatened attack. Its water is not touched. The district may hit your station back once, that round, and will refuse your offers afterwards.</p>
+          <p><b>Exposure.</b> Signalling adds 2 and striking adds 3; hiding removes 2. At 2 or more your station can be hit, and at 4 some districts will hit it unprovoked. It has 3 integrity.</p>
+          <p><b>Threats.</b> A district may threaten a heavy extractor. The strike comes next round only if the target is still drawing heavily, and only if the attacker is able to act.</p>
+          <p><b>The basin needs 30 a round.</b> Two short rounds in a row and it collapses. Lose the station and it is over too.</p>
+          <p><b>Endings.</b> Survive with no district ever in distress: Shared Dawn. Survive otherwise: Fragile Peace. Fall: The Long Night. Then the world shows what was hidden.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <footer>Every world is fixed by its number: the same number and the same choices always play out the same way. Nothing here is random once a world begins, and nothing is sent anywhere. The rules are an experiment and will change.</footer>
+</div>
+<script>/*BUNDLE*/</script>
+</body>
+</html>

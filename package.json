@@ -1,0 +1,19 @@
+{
+  "name": "microcosmos",
+  "version": "0.7.3",
+  "private": true,
+  "type": "module",
+  "description": "The Dark Microcosmos: six worlds, one basin, one passage through the dark.",
+  "engines": { "node": ">=22.18" },
+  "scripts": {
+    "test": "node --test test/*.test.ts",
+    "test:archive": "node --test archive/before-unification/test/*.test.ts",
+    "strategies": "node scripts/strategies.ts",
+    "witnesses": "node scripts/witnesses.ts",
+    "play": "vite",
+    "build": "vite build",
+    "release": "vite build && python3 scripts/build_release.py"
+  },
+  "devDependencies": { "vite": "^5.4.11" },
+  "dependencies": { "three": "^0.170.0" }
+}

@@ -1,0 +1,754 @@
+{
+ "rest": {
+  "prefix": [
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "connect",
+    "edge": 10
+   },
+   {
+    "type": "connect",
+    "edge": 5
+   },
+   {
+    "type": "connect",
+    "edge": 0
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "ability",
+    "world": 2
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "ability",
+    "world": 0
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "connect",
+    "edge": 4
+   },
+   {
+    "type": "release",
+    "edge": 5
+   },
+   {
+    "type": "care",
+    "world": 4
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "connect",
+    "edge": 5
+   },
+   {
+    "type": "ability",
+    "world": 0
+   }
+  ],
+  "choice": {
+   "type": "rest"
+  },
+  "margin": 3,
+  "rival": {
+   "type": "release",
+   "edge": 0
+  },
+  "moment": 18
+ },
+ "connect": {
+  "prefix": [
+   {
+    "type": "connect",
+    "edge": 14
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "care",
+    "world": 5
+   },
+   {
+    "type": "connect",
+    "edge": 7
+   },
+   {
+    "type": "care",
+    "world": 0
+   },
+   {
+    "type": "care",
+    "world": 4
+   },
+   {
+    "type": "connect",
+    "edge": 5
+   },
+   {
+    "type": "care",
+    "world": 5
+   },
+   {
+    "type": "release",
+    "edge": 7
+   },
+   {
+    "type": "connect",
+    "edge": 12
+   },
+   {
+    "type": "care",
+    "world": 0
+   },
+   {
+    "type": "ability",
+    "world": 4,
+    "target": 0
+   },
+   {
+    "type": "ability",
+    "world": 1
+   }
+  ],
+  "choice": {
+   "type": "connect",
+   "edge": 2
+  },
+  "margin": 12,
+  "rival": {
+   "type": "care",
+   "world": 4
+  },
+  "moment": 15
+ },
+ "care": {
+  "prefix": [
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "ability",
+    "world": 4,
+    "target": 3
+   },
+   {
+    "type": "connect",
+    "edge": 0
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "connect",
+    "edge": 3
+   },
+   {
+    "type": "ability",
+    "world": 5
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "ability",
+    "world": 0
+   },
+   {
+    "type": "mediate"
+   },
+   {
+    "type": "ability",
+    "world": 4,
+    "target": 3
+   },
+   {
+    "type": "care",
+    "world": 4
+   },
+   {
+    "type": "care",
+    "world": 4
+   },
+   {
+    "type": "ability",
+    "world": 4,
+    "target": 1
+   },
+   {
+    "type": "connect",
+    "edge": 11
+   },
+   {
+    "type": "release",
+    "edge": 3
+   },
+   {
+    "type": "ability",
+    "world": 5
+   }
+  ],
+  "choice": {
+   "type": "care",
+   "world": 2
+  },
+  "margin": 37,
+  "rival": {
+   "type": "rest"
+  },
+  "moment": 18
+ },
+ "ability:sanctum": {
+  "prefix": [
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "care",
+    "world": 4
+   },
+   {
+    "type": "connect",
+    "edge": 0
+   },
+   {
+    "type": "release",
+    "edge": 0
+   },
+   {
+    "type": "connect",
+    "edge": 7
+   },
+   {
+    "type": "release",
+    "edge": 7
+   },
+   {
+    "type": "connect",
+    "edge": 6
+   },
+   {
+    "type": "connect",
+    "edge": 11
+   },
+   {
+    "type": "connect",
+    "edge": 7
+   }
+  ],
+  "choice": {
+   "type": "ability",
+   "world": 3
+  },
+  "margin": 15,
+  "rival": {
+   "type": "connect",
+   "edge": 10
+  },
+  "moment": 11
+ },
+ "mediate": {
+  "prefix": [
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "ability",
+    "world": 4,
+    "target": 3
+   },
+   {
+    "type": "ability",
+    "world": 5
+   },
+   {
+    "type": "connect",
+    "edge": 3
+   },
+   {
+    "type": "connect",
+    "edge": 13
+   },
+   {
+    "type": "ability",
+    "world": 5
+   },
+   {
+    "type": "ability",
+    "world": 4,
+    "target": 2
+   },
+   {
+    "type": "connect",
+    "edge": 5
+   },
+   {
+    "type": "ability",
+    "world": 0
+   }
+  ],
+  "choice": {
+   "type": "mediate"
+  },
+  "margin": 12,
+  "rival": {
+   "type": "connect",
+   "edge": 7
+  },
+  "moment": 11
+ },
+ "ability:ember": {
+  "prefix": [
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "care",
+    "world": 3
+   },
+   {
+    "type": "connect",
+    "edge": 6
+   },
+   {
+    "type": "ability",
+    "world": 3
+   },
+   {
+    "type": "care",
+    "world": 4
+   },
+   {
+    "type": "ability",
+    "world": 4,
+    "target": 3
+   }
+  ],
+  "choice": {
+   "type": "ability",
+   "world": 2
+  },
+  "margin": 15,
+  "rival": {
+   "type": "care",
+   "world": 4
+  },
+  "moment": 9
+ },
+ "ability:unobserved": {
+  "prefix": [
+   {
+    "type": "care",
+    "world": 0
+   },
+   {
+    "type": "connect",
+    "edge": 4
+   },
+   {
+    "type": "connect",
+    "edge": 2
+   },
+   {
+    "type": "ability",
+    "world": 2
+   },
+   {
+    "type": "ability",
+    "world": 5
+   },
+   {
+    "type": "ability",
+    "world": 3
+   },
+   {
+    "type": "connect",
+    "edge": 12
+   },
+   {
+    "type": "ability",
+    "world": 1
+   },
+   {
+    "type": "ability",
+    "world": 4,
+    "target": 0
+   },
+   {
+    "type": "care",
+    "world": 4
+   },
+   {
+    "type": "ability",
+    "world": 3
+   },
+   {
+    "type": "connect",
+    "edge": 10
+   },
+   {
+    "type": "release",
+    "edge": 2
+   },
+   {
+    "type": "care",
+    "world": 0
+   },
+   {
+    "type": "connect",
+    "edge": 5
+   }
+  ],
+  "choice": {
+   "type": "ability",
+   "world": 5
+  },
+  "margin": 1034,
+  "rival": {
+   "type": "connect",
+   "edge": 2
+  },
+  "moment": 16
+ },
+ "ability:verdance": {
+  "prefix": [
+   {
+    "type": "ability",
+    "world": 0
+   },
+   {
+    "type": "ability",
+    "world": 4,
+    "target": 3
+   },
+   {
+    "type": "connect",
+    "edge": 6
+   },
+   {
+    "type": "care",
+    "world": 5
+   },
+   {
+    "type": "ability",
+    "world": 0
+   },
+   {
+    "type": "care",
+    "world": 2
+   },
+   {
+    "type": "connect",
+    "edge": 4
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "ability",
+    "world": 0
+   },
+   {
+    "type": "mediate"
+   },
+   {
+    "type": "ability",
+    "world": 4,
+    "target": 3
+   },
+   {
+    "type": "ability",
+    "world": 0
+   },
+   {
+    "type": "release",
+    "edge": 4
+   },
+   {
+    "type": "connect",
+    "edge": 7
+   },
+   {
+    "type": "connect",
+    "edge": 11
+   },
+   {
+    "type": "connect",
+    "edge": 10
+   }
+  ],
+  "choice": {
+   "type": "ability",
+   "world": 1
+  },
+  "margin": 34,
+  "rival": {
+   "type": "care",
+   "world": 0
+  },
+  "moment": 17
+ },
+ "ability:prism": {
+  "prefix": [
+   {
+    "type": "connect",
+    "edge": 1
+   },
+   {
+    "type": "connect",
+    "edge": 12
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "connect",
+    "edge": 0
+   },
+   {
+    "type": "ability",
+    "world": 2
+   },
+   {
+    "type": "care",
+    "world": 4
+   },
+   {
+    "type": "connect",
+    "edge": 6
+   },
+   {
+    "type": "care",
+    "world": 1
+   },
+   {
+    "type": "ability",
+    "world": 0
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "care",
+    "world": 1
+   },
+   {
+    "type": "release",
+    "edge": 1
+   },
+   {
+    "type": "release",
+    "edge": 12
+   },
+   {
+    "type": "connect",
+    "edge": 2
+   },
+   {
+    "type": "care",
+    "world": 0
+   }
+  ],
+  "choice": {
+   "type": "ability",
+   "world": 4,
+   "target": 0
+  },
+  "margin": 1040,
+  "rival": {
+   "type": "care",
+   "world": 4
+  },
+  "moment": 16
+ },
+ "ability:obsidian": {
+  "prefix": [
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "connect",
+    "edge": 13
+   },
+   {
+    "type": "care",
+    "world": 1
+   },
+   {
+    "type": "ability",
+    "world": 4,
+    "target": 5
+   },
+   {
+    "type": "connect",
+    "edge": 3
+   },
+   {
+    "type": "release",
+    "edge": 3
+   },
+   {
+    "type": "care",
+    "world": 0
+   },
+   {
+    "type": "ability",
+    "world": 4,
+    "target": 1
+   },
+   {
+    "type": "ability",
+    "world": 0
+   },
+   {
+    "type": "connect",
+    "edge": 10
+   },
+   {
+    "type": "care",
+    "world": 0
+   },
+   {
+    "type": "care",
+    "world": 0
+   },
+   {
+    "type": "ability",
+    "world": 4,
+    "target": 0
+   },
+   {
+    "type": "connect",
+    "edge": 5
+   }
+  ],
+  "choice": {
+   "type": "ability",
+   "world": 0
+  },
+  "margin": 1040,
+  "rival": {
+   "type": "ability",
+   "world": 1
+  },
+  "moment": 16
+ },
+ "release": {
+  "prefix": [
+   {
+    "type": "connect",
+    "edge": 4
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "ability",
+    "world": 4,
+    "target": 3
+   },
+   {
+    "type": "care",
+    "world": 5
+   },
+   {
+    "type": "connect",
+    "edge": 0
+   },
+   {
+    "type": "care",
+    "world": 4
+   },
+   {
+    "type": "care",
+    "world": 4
+   },
+   {
+    "type": "ability",
+    "world": 4,
+    "target": 2
+   },
+   {
+    "type": "ability",
+    "world": 2
+   },
+   {
+    "type": "connect",
+    "edge": 5
+   },
+   {
+    "type": "ability",
+    "world": 4,
+    "target": 5
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "ability",
+    "world": 0
+   },
+   {
+    "type": "connect",
+    "edge": 10
+   },
+   {
+    "type": "ability",
+    "world": 1
+   },
+   {
+    "type": "ability",
+    "world": 4,
+    "target": 0
+   }
+  ],
+  "choice": {
+   "type": "release",
+   "edge": 0
+  },
+  "margin": 12,
+  "rival": {
+   "type": "ability",
+   "world": 2
+  },
+  "moment": 17
+ }
+}

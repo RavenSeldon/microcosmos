@@ -1,0 +1,229 @@
+{
+  "id": "mix-coop",
+  "label": "Family mix 60 / 25 / 15 (R / E / P)",
+  "params": {
+    "rounds": 6,
+    "districts": 6,
+    "supplyMode": "relative",
+    "supply": 60,
+    "slack": -1,
+    "basinMin": 30,
+    "integrity": 3,
+    "exposure": {
+      "listen": 0,
+      "signal": 2,
+      "strike": 3,
+      "hide": -2,
+      "max": 4,
+      "targetable": 2
+    },
+    "strike": {
+      "prevent": 5,
+      "destroy": 2,
+      "catchup": 3
+    },
+    "signal": {
+      "cover": 4,
+      "duration": 2,
+      "capacityMin": 2,
+      "extractiveAcceptReserve": 8,
+      "extractiveDefectBelow": 6
+    },
+    "need": {
+      "min": 3,
+      "max": 8,
+      "shocks": [
+        -1,
+        0,
+        0,
+        1
+      ]
+    },
+    "reserve": {
+      "min": 0,
+      "max": 10,
+      "comfort": 4,
+      "refill": 1
+    },
+    "bands": {
+      "lowMax": 3,
+      "highMin": 8
+    },
+    "seriousUnmet": 2,
+    "failure": {
+      "basinRule": "consecutive",
+      "basinConsecutive": 2,
+      "basinBuffer": 6,
+      "districtConsecutive": 2
+    },
+    "mix": {
+      "R": 0.6,
+      "E": 0.25,
+      "P": 0.15
+    },
+    "autonomous": true,
+    "maxStationHitsPerRound": 1
+  },
+  "summary": {
+    "seeds": 300,
+    "classes": {
+      "unwinnable": 0.0033333333333333335,
+      "passiveWins": 0.07,
+      "rescuable": 0.9266666666666666
+    },
+    "amongRescuable": {
+      "n": 278,
+      "winnableWithoutStrike": 0.9820143884892086,
+      "winnableWithoutSignal": 0.6654676258992805,
+      "strikeRequired": 0.017985611510791366,
+      "signalRequired": 0.3345323741007194,
+      "bothRoutes": 0.6546762589928058,
+      "meanWinFraction": 0.0645001606260698,
+      "minActive": [
+        0.8597122302158273,
+        0.13309352517985612,
+        0.0035971223021582736,
+        0.0035971223021582736
+      ]
+    },
+    "amongPassiveWins": {
+      "n": 21,
+      "meanWinFraction": 0.13795280580916927
+    },
+    "bots": {
+      "hide x6 (do nothing)": {
+        "winRate": 0.07,
+        "winRateWinnable": 0.07023411371237458,
+        "winRateRescuable": 0,
+        "lossStation": 0,
+        "lossBasin": 0.93,
+        "lossDistrict": 0,
+        "meanHarm": 1.24,
+        "meanDistressRounds": 0.23,
+        "meanStrikes": 0,
+        "meanSignals": 0
+      },
+      "strike every round": {
+        "winRate": 0.0033333333333333335,
+        "winRateWinnable": 0.0033444816053511705,
+        "winRateRescuable": 0.0035971223021582736,
+        "lossStation": 0.71,
+        "lossBasin": 0.7166666666666667,
+        "lossDistrict": 0,
+        "meanHarm": 4.43,
+        "meanDistressRounds": 1.01,
+        "meanStrikes": 2.8,
+        "meanSignals": 0
+      },
+      "alternate strike": {
+        "winRate": 0.08,
+        "winRateWinnable": 0.0802675585284281,
+        "winRateRescuable": 0.08633093525179857,
+        "lossStation": 0.31,
+        "lossBasin": 0.63,
+        "lossDistrict": 0,
+        "meanHarm": 2.68,
+        "meanDistressRounds": 0.5166666666666667,
+        "meanStrikes": 1.6233333333333333,
+        "meanSignals": 0
+      },
+      "reactive strike": {
+        "winRate": 0.06333333333333334,
+        "winRateWinnable": 0.06354515050167224,
+        "winRateRescuable": 0.06474820143884892,
+        "lossStation": 0.4533333333333333,
+        "lossBasin": 0.48333333333333334,
+        "lossDistrict": 0,
+        "meanHarm": 3.8833333333333333,
+        "meanDistressRounds": 0.84,
+        "meanStrikes": 2.033333333333333,
+        "meanSignals": 0
+      },
+      "cooperate, hide when exposed": {
+        "winRate": 0.4166666666666667,
+        "winRateWinnable": 0.4180602006688963,
+        "winRateRescuable": 0.38848920863309355,
+        "lossStation": 0,
+        "lossBasin": 0.5833333333333334,
+        "lossDistrict": 0,
+        "meanHarm": 2.3966666666666665,
+        "meanDistressRounds": 0.54,
+        "meanStrikes": 0,
+        "meanSignals": 2.4266666666666667
+      },
+      "cooperate loudly": {
+        "winRate": 0.15,
+        "winRateWinnable": 0.1505016722408027,
+        "winRateRescuable": 0.1510791366906475,
+        "lossStation": 0.5166666666666667,
+        "lossBasin": 0.37666666666666665,
+        "lossDistrict": 0,
+        "meanHarm": 2.1766666666666667,
+        "meanDistressRounds": 0.5466666666666666,
+        "meanStrikes": 0,
+        "meanSignals": 4.306666666666667
+      },
+      "listen once, then cooperate": {
+        "winRate": 0.4866666666666667,
+        "winRateWinnable": 0.4882943143812709,
+        "winRateRescuable": 0.4676258992805755,
+        "lossStation": 0,
+        "lossBasin": 0.5133333333333333,
+        "lossDistrict": 0,
+        "meanHarm": 2.4166666666666665,
+        "meanDistressRounds": 0.5366666666666666,
+        "meanStrikes": 0,
+        "meanSignals": 2.3033333333333332
+      },
+      "listen before every offer": {
+        "winRate": 0.27,
+        "winRateWinnable": 0.2709030100334448,
+        "winRateRescuable": 0.22661870503597123,
+        "lossStation": 0,
+        "lossBasin": 0.73,
+        "lossDistrict": 0,
+        "meanHarm": 1.75,
+        "meanDistressRounds": 0.38666666666666666,
+        "meanStrikes": 0,
+        "meanSignals": 0.7466666666666667
+      },
+      "informed mixed, no listen": {
+        "winRate": 0.5333333333333333,
+        "winRateWinnable": 0.5351170568561873,
+        "winRateRescuable": 0.5107913669064749,
+        "lossStation": 0.0033333333333333335,
+        "lossBasin": 0.4633333333333333,
+        "lossDistrict": 0,
+        "meanHarm": 2.6933333333333334,
+        "meanDistressRounds": 0.6366666666666667,
+        "meanStrikes": 0,
+        "meanSignals": 3.013333333333333
+      },
+      "informed mixed": {
+        "winRate": 0.54,
+        "winRateWinnable": 0.5418060200668896,
+        "winRateRescuable": 0.5179856115107914,
+        "lossStation": 0.0033333333333333335,
+        "lossBasin": 0.46,
+        "lossDistrict": 0,
+        "meanHarm": 2.5766666666666667,
+        "meanDistressRounds": 0.6,
+        "meanStrikes": 0.006666666666666667,
+        "meanSignals": 2.47
+      },
+      "random (mean of 20)": {
+        "winRate": 0.07316666666666725,
+        "winRateWinnable": 0.07341137123745879,
+        "winRateRescuable": 0.07050359712230267,
+        "lossStation": 0.5163333333333365,
+        "lossBasin": 0.5968333333333549,
+        "lossDistrict": 0.0003333333333333334,
+        "meanHarm": 2.221166666666673,
+        "meanDistressRounds": 0.4649999999999928,
+        "meanStrikes": 1.1300000000000618,
+        "meanSignals": 1.1698333333333832
+      }
+    },
+    "meanStates": 10203.41
+  }
+}

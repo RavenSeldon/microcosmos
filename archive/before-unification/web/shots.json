@@ -1,0 +1,45 @@
+{
+  "start": {
+    "seed": 1005,
+    "actions": []
+  },
+  "threat": {
+    "seed": 1005,
+    "actions": [
+      18
+    ],
+    "select": 2
+  },
+  "dawn": {
+    "seed": 1005,
+    "actions": [
+      8,
+      18,
+      6,
+      18,
+      9,
+      18
+    ]
+  },
+  "fragile": {
+    "seed": 1001,
+    "actions": [
+      7,
+      11,
+      18,
+      18,
+      7,
+      18
+    ]
+  },
+  "night": {
+    "seed": 1001,
+    "actions": [
+      7,
+      11,
+      18,
+      7,
+      14
+    ]
+  }
+}

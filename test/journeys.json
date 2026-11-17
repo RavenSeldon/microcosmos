@@ -1,0 +1,839 @@
+{
+ "any": {
+  "rule": "anything allowed",
+  "outcome": "dawn",
+  "actions": [
+   {
+    "type": "connect",
+    "edge": 0
+   },
+   {
+    "type": "connect",
+    "edge": 7
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "connect",
+    "edge": 10
+   },
+   {
+    "type": "care",
+    "world": 5
+   },
+   {
+    "type": "ability",
+    "world": 2
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "ability",
+    "world": 1
+   },
+   {
+    "type": "ability",
+    "world": 5
+   },
+   {
+    "type": "care",
+    "world": 0
+   }
+  ]
+ },
+ "two-currents": {
+  "rule": "at most two currents ever opened",
+  "outcome": "dawn",
+  "actions": [
+   {
+    "type": "connect",
+    "edge": 5
+   },
+   {
+    "type": "connect",
+    "edge": 10
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "ability",
+    "world": 4,
+    "target": 0
+   },
+   {
+    "type": "care",
+    "world": 5
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "ability",
+    "world": 2
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "ability",
+    "world": 4,
+    "target": 0
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "ability",
+    "world": 4,
+    "target": 0
+   },
+   {
+    "type": "care",
+    "world": 5
+   }
+  ]
+ },
+ "one-current": {
+  "rule": "one current ever opened",
+  "outcome": "dawn",
+  "actions": [
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "connect",
+    "edge": 0
+   },
+   {
+    "type": "ability",
+    "world": 4,
+    "target": 0
+   },
+   {
+    "type": "care",
+    "world": 2
+   },
+   {
+    "type": "care",
+    "world": 5
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "care",
+    "world": 0
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "ability",
+    "world": 4,
+    "target": 2
+   },
+   {
+    "type": "care",
+    "world": 1
+   },
+   {
+    "type": "ability",
+    "world": 1
+   },
+   {
+    "type": "ability",
+    "world": 4,
+    "target": 1
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "care",
+    "world": 2
+   },
+   {
+    "type": "care",
+    "world": 5
+   },
+   {
+    "type": "rest"
+   }
+  ]
+ },
+ "no-tending": {
+  "rule": "the basin never tends a world",
+  "outcome": "dawn",
+  "actions": [
+   {
+    "type": "connect",
+    "edge": 0
+   },
+   {
+    "type": "connect",
+    "edge": 1
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "connect",
+    "edge": 10
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "ability",
+    "world": 2
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "ability",
+    "world": 5
+   },
+   {
+    "type": "rest"
+   }
+  ]
+ },
+ "no-abilities": {
+  "rule": "no world uses its ability",
+  "outcome": "dawn",
+  "actions": [
+   {
+    "type": "connect",
+    "edge": 0
+   },
+   {
+    "type": "connect",
+    "edge": 3
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "connect",
+    "edge": 8
+   },
+   {
+    "type": "care",
+    "world": 2
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "care",
+    "world": 4
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "care",
+    "world": 1
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "care",
+    "world": 0
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "care",
+    "world": 0
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "care",
+    "world": 2
+   },
+   {
+    "type": "rest"
+   }
+  ]
+ },
+ "no-currents": {
+  "rule": "no lasting current at all",
+  "outcome": "peace",
+  "actions": [
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "care",
+    "world": 0
+   },
+   {
+    "type": "ability",
+    "world": 4,
+    "target": 1
+   },
+   {
+    "type": "care",
+    "world": 5
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "care",
+    "world": 0
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "care",
+    "world": 0
+   },
+   {
+    "type": "ability",
+    "world": 2
+   },
+   {
+    "type": "ability",
+    "world": 4,
+    "target": 2
+   },
+   {
+    "type": "care",
+    "world": 0
+   },
+   {
+    "type": "care",
+    "world": 0
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "care",
+    "world": 0
+   },
+   {
+    "type": "ability",
+    "world": 4,
+    "target": 1
+   },
+   {
+    "type": "care",
+    "world": 0
+   },
+   {
+    "type": "care",
+    "world": 2
+   }
+  ]
+ },
+ "without-obsidian": {
+  "rule": "no current or bypass ever touches Obsidian",
+  "outcome": "dawn",
+  "actions": [
+   {
+    "type": "connect",
+    "edge": 5
+   },
+   {
+    "type": "connect",
+    "edge": 7
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "connect",
+    "edge": 11
+   },
+   {
+    "type": "care",
+    "world": 0
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "care",
+    "world": 0
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "care",
+    "world": 0
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "care",
+    "world": 0
+   },
+   {
+    "type": "care",
+    "world": 0
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "care",
+    "world": 0
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "care",
+    "world": 0
+   },
+   {
+    "type": "rest"
+   }
+  ]
+ },
+ "without-verdance": {
+  "rule": "no current or bypass ever touches Verdance",
+  "outcome": "dawn",
+  "actions": [
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "care",
+    "world": 0
+   },
+   {
+    "type": "ability",
+    "world": 5
+   },
+   {
+    "type": "care",
+    "world": 4
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "connect",
+    "edge": 4
+   },
+   {
+    "type": "ability",
+    "world": 2
+   },
+   {
+    "type": "connect",
+    "edge": 10
+   },
+   {
+    "type": "care",
+    "world": 1
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "ability",
+    "world": 5
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "care",
+    "world": 4
+   },
+   {
+    "type": "ability",
+    "world": 5
+   },
+   {
+    "type": "care",
+    "world": 2
+   },
+   {
+    "type": "care",
+    "world": 4
+   }
+  ]
+ },
+ "without-ember": {
+  "rule": "no current or bypass ever touches Ember",
+  "outcome": "dawn",
+  "actions": [
+   {
+    "type": "connect",
+    "edge": 0
+   },
+   {
+    "type": "connect",
+    "edge": 4
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "connect",
+    "edge": 7
+   },
+   {
+    "type": "care",
+    "world": 2
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "ability",
+    "world": 0
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "ability",
+    "world": 1
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "care",
+    "world": 2
+   },
+   {
+    "type": "rest"
+   }
+  ]
+ },
+ "without-sanctum": {
+  "rule": "no current or bypass ever touches Sanctum",
+  "outcome": "dawn",
+  "actions": [
+   {
+    "type": "connect",
+    "edge": 0
+   },
+   {
+    "type": "connect",
+    "edge": 7
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "connect",
+    "edge": 10
+   },
+   {
+    "type": "care",
+    "world": 5
+   },
+   {
+    "type": "ability",
+    "world": 2
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "ability",
+    "world": 1
+   },
+   {
+    "type": "ability",
+    "world": 5
+   },
+   {
+    "type": "care",
+    "world": 0
+   }
+  ]
+ },
+ "without-prism": {
+  "rule": "no current or bypass ever touches Prism",
+  "outcome": "dawn",
+  "actions": [
+   {
+    "type": "connect",
+    "edge": 0
+   },
+   {
+    "type": "connect",
+    "edge": 4
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "care",
+    "world": 2
+   },
+   {
+    "type": "ability",
+    "world": 4,
+    "target": 0
+   },
+   {
+    "type": "ability",
+    "world": 0
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "ability",
+    "world": 0
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "ability",
+    "world": 4,
+    "target": 0
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "care",
+    "world": 2
+   },
+   {
+    "type": "rest"
+   }
+  ]
+ },
+ "without-unobserved": {
+  "rule": "no current or bypass ever touches Unobserved",
+  "outcome": "dawn",
+  "actions": [
+   {
+    "type": "connect",
+    "edge": 0
+   },
+   {
+    "type": "connect",
+    "edge": 7
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "connect",
+    "edge": 10
+   },
+   {
+    "type": "care",
+    "world": 5
+   },
+   {
+    "type": "ability",
+    "world": 2
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "ability",
+    "world": 1
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "ability",
+    "world": 5
+   }
+  ]
+ }
+}

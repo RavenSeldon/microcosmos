@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#05060b">
+  <meta name="description" content="Six distinct worlds. Shape their currents, find a rhythm, and carry a shared universe through the changing seasons.">
+  <title>Dark Microcosmos · Living Currents</title>
+  <link rel="icon" href="./cosmogram.svg">
+  <link rel="stylesheet" href="./fonts/fonts.css">
+</head>
+<body>
+  <header class="masthead">
+    <a class="wordmark" href="./" aria-label="Microcosmos home">Microcosmos<span>SIX WORLDS · ONE SHARED EXISTENCE</span></a>
+    <nav aria-label="Garden tools"><button id="sound" aria-pressed="false">Sound off</button><button id="guide">A gentle guide</button><button id="restart">Begin again</button></nav>
+  </header>
+  <main>
+    <section class="intimacy" aria-label="Listen to a world">
+      <p class="eyebrow" id="chapter-label">LIVING CURRENTS · FIRST SEASON</p>
+      <div id="attention" class="attention" hidden></div>
+      <div id="companion"></div>
+    </section>
+    <section class="universe" aria-label="The living network">
+      <div class="weather"><span id="weather"></span><span id="season-note"></span></div>
+      <div id="stage" role="img" aria-label="Six living worlds, connected above the Seventh Basin"></div>
+      <div id="world-labels" aria-hidden="true"></div>
+      <div class="basin-caption"><span class="eyebrow">THE SEVENTH BASIN</span><strong id="basin-mood"></strong><span>Another community. The water we share.</span></div>
+      <div id="world-choices" class="world-choices" role="group" aria-label="Choose a world to listen to"></div>
+      <p class="orbit-note">Drag to wander · scroll to come closer</p>
+    </section>
+    <section class="current-story" aria-label="The latest moment">
+      <div class="moment"><span class="eyebrow" id="moment-label">A FIRST HELLO</span><p id="story" aria-live="polite" aria-atomic="true"></p></div>
+      <div class="passing"><button id="flow" class="primary">Let it flow <span aria-hidden="true">↗</span></button><span>The world waits for you.</span><button id="undo" class="text-button">Undo last moment</button></div>
+    </section>
+  </main>
+  <footer><span>如實 · 道 · 愛 · 不二</span><span id="save-note">Your little universe stays on this device.</span><button id="ledger">Look beneath the surface</button></footer>
+  <dialog id="dialog"><div id="dialog-content"></div><button id="close-dialog" class="primary">Back to the worlds</button></dialog>
+  <script type="module" src="./garden.ts"></script>
+</body>
+</html>

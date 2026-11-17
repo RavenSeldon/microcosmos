@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#05060b">
+  <meta name="description" content="Six worlds, one basin, one passage through the dark. Make a small decision, see what answers, find what it opens.">
+  <title>The Dark Microcosmos</title>
+  <link rel="icon" href="./cosmogram.svg">
+  <link rel="stylesheet" href="./fonts/fonts.css">
+</head>
+<body>
+  <div id="stage" role="img" aria-label="Six worlds on a ring above the Seventh Basin"></div>
+  <div id="labels" aria-hidden="true"></div>
+  <div id="response-cue" aria-hidden="true" hidden></div>
+  <dialog id="intro" class="intro" aria-labelledby="intro-title" hidden>
+    <div class="intro-inner">
+      <p class="eyebrow">The Seventh Basin speaks</p>
+      <h1 id="intro-title" tabindex="-1">The Dark <em>Microcosmos</em></h1>
+      <p class="line">Six worlds share one basin. We are the seventh community, and you keep our water.</p>
+      <p class="line">You cannot command a world. You can listen, ask two of them to share a current, tend one from our stores, ask one for what it does best, or wait.</p>
+      <p class="line">Eighteen moments: an open sky, then the dark, then the rain’s return. Bring every world through awake, with room for the water it has used.</p>
+      <p class="intro-reassurance">Nothing moves while you think. Listening is free. Every moment can be undone.</p>
+      <div class="intro-row">
+        <button type="button" id="begin-guided" class="primary">Let the worlds guide me</button>
+        <button type="button" id="begin-silent" class="ghost">Find my own way</button>
+      </div>
+      <p class="fine">One journey, the same possibilities. Choose written guidance from the worlds, or discover for yourself. Change this in the keeper’s notes. Music is a separate, optional choice.</p>
+    </div>
+  </dialog>
+
+  <header class="mast">
+    <a class="mark" href="./">The Dark <em>Microcosmos</em></a>
+    <nav aria-label="Journey tools">
+      <button type="button" id="sound" aria-pressed="false">Sound off</button>
+      <button type="button" id="guide">Keeper’s notes</button>
+      <button type="button" id="ledger">The water</button>
+      <button type="button" id="restart">Begin again</button>
+    </nav>
+  </header>
+
+  <section class="sky" aria-label="Where the journey stands">
+    <p class="eyebrow" id="sky-name"></p>
+    <div id="ribbon" class="ribbon" role="img"></div>
+    <p id="sky-note" class="sky-note"></p>
+    <div id="night" class="night" hidden></div>
+  </section>
+
+  <main>
+    <section id="route-preview" aria-label="Preview a current" hidden></section>
+    <section id="panel" class="panel" aria-label="The world you are listening to">
+      <div id="notice" class="notice" hidden></div>
+      <div id="companion"></div>
+    </section>
+    <div id="chips" class="chips" role="group" aria-label="Choose a world to listen to"></div>
+    <section class="story" aria-label="The latest moment">
+      <div class="telling"><div id="voices"><div id="whisper" class="whisper" hidden></div></div><span class="eyebrow" id="moment-label"></span><p id="story" aria-live="polite" aria-atomic="true"></p><button type="button" id="read-moment" class="text" hidden>Read this moment</button><small id="save-status"></small></div>
+      <div class="passing">
+        <button type="button" id="flow" class="primary">Let it flow</button>
+        <button type="button" id="work" class="ghost">Let the currents work</button>
+        <button type="button" id="undo" class="text">Undo</button>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="dialog"><div id="dialog-content"></div><button type="button" id="close-dialog" class="primary">Back to the worlds</button></dialog>
+  <script type="module" src="./game.ts"></script>
+</body>
+</html>

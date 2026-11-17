@@ -1,0 +1,211 @@
+{
+  "suite": "heldout",
+  "firstSeed": 400001,
+  "lastSeed": 400500,
+  "modes": {
+    "standing retaliation (G1c)": {
+      "search": {
+        "survivable": 0.994,
+        "dawn": 0.98,
+        "thirdRequired": 0.008,
+        "signalRequired": 0.75,
+        "dawnOnlyBySurviving": 0.014
+      },
+      "bots": {
+        "hide x6 (do nothing)": {
+          "survive": 0.152,
+          "sharedDawn": 0.138,
+          "lostBasin": 0.848,
+          "lostStation": 0,
+          "distressRounds": 0.07,
+          "thirdActionUsed": 0,
+          "dawnVsInformed": {
+            "diff": -0.28,
+            "lo": -0.32908616424207543,
+            "hi": -0.23091383575792465
+          }
+        },
+        "cooperate, hide when exposed": {
+          "survive": 0.438,
+          "sharedDawn": 0.322,
+          "lostBasin": 0.562,
+          "lostStation": 0,
+          "distressRounds": 0.276,
+          "thirdActionUsed": 0,
+          "dawnVsInformed": {
+            "diff": -0.096,
+            "lo": -0.12865432940361815,
+            "hi": -0.06334567059638187
+          }
+        },
+        "defuse by signal": {
+          "survive": 0.468,
+          "sharedDawn": 0.356,
+          "lostBasin": 0.512,
+          "lostStation": 0.022,
+          "distressRounds": 0.262,
+          "thirdActionUsed": 0,
+          "dawnVsInformed": {
+            "diff": -0.062,
+            "lo": -0.09772967644969655,
+            "hi": -0.02627032355030346
+          }
+        },
+        "informed mixed, no listen": {
+          "survive": 0.57,
+          "sharedDawn": 0.418,
+          "lostBasin": 0.418,
+          "lostStation": 0.024,
+          "distressRounds": 0.326,
+          "thirdActionUsed": 0,
+          "dawnVsInformed": {
+            "diff": 0,
+            "lo": 0,
+            "hi": 0
+          }
+        },
+        "defuse by strike": {
+          "survive": 0.178,
+          "sharedDawn": 0.178,
+          "lostBasin": 0.674,
+          "lostStation": 0.232,
+          "distressRounds": 0.092,
+          "thirdActionUsed": 0.91,
+          "dawnVsInformed": {
+            "diff": -0.24,
+            "lo": -0.2786473036575645,
+            "hi": -0.20135269634243547
+          }
+        },
+        "defuse: signal, else strike": {
+          "survive": 0.276,
+          "sharedDawn": 0.276,
+          "lostBasin": 0.48,
+          "lostStation": 0.308,
+          "distressRounds": 0.174,
+          "thirdActionUsed": 0.538,
+          "dawnVsInformed": {
+            "diff": -0.142,
+            "lo": -0.17769525395903493,
+            "hi": -0.10630474604096504
+          }
+        },
+        "protect when the basin is safe": {
+          "survive": 0.32,
+          "sharedDawn": 0.296,
+          "lostBasin": 0.42,
+          "lostStation": 0.334,
+          "distressRounds": 0.266,
+          "thirdActionUsed": 0.378,
+          "dawnVsInformed": {
+            "diff": -0.122,
+            "lo": -0.15469336402391165,
+            "hi": -0.08930663597608836
+          }
+        }
+      }
+    },
+    "one response per strike (G1d)": {
+      "search": {
+        "survivable": 0.994,
+        "dawn": 0.994,
+        "thirdRequired": 0.022,
+        "signalRequired": 0.728,
+        "dawnOnlyBySurviving": 0
+      },
+      "bots": {
+        "hide x6 (do nothing)": {
+          "survive": 0.152,
+          "sharedDawn": 0.138,
+          "lostBasin": 0.848,
+          "lostStation": 0,
+          "distressRounds": 0.07,
+          "thirdActionUsed": 0,
+          "dawnVsInformed": {
+            "diff": -0.28,
+            "lo": -0.32908616424207543,
+            "hi": -0.23091383575792465
+          }
+        },
+        "cooperate, hide when exposed": {
+          "survive": 0.438,
+          "sharedDawn": 0.322,
+          "lostBasin": 0.562,
+          "lostStation": 0,
+          "distressRounds": 0.276,
+          "thirdActionUsed": 0,
+          "dawnVsInformed": {
+            "diff": -0.096,
+            "lo": -0.12865432940361815,
+            "hi": -0.06334567059638187
+          }
+        },
+        "defuse by signal": {
+          "survive": 0.468,
+          "sharedDawn": 0.356,
+          "lostBasin": 0.512,
+          "lostStation": 0.022,
+          "distressRounds": 0.262,
+          "thirdActionUsed": 0,
+          "dawnVsInformed": {
+            "diff": -0.062,
+            "lo": -0.09772967644969655,
+            "hi": -0.02627032355030346
+          }
+        },
+        "informed mixed, no listen": {
+          "survive": 0.57,
+          "sharedDawn": 0.418,
+          "lostBasin": 0.418,
+          "lostStation": 0.024,
+          "distressRounds": 0.326,
+          "thirdActionUsed": 0,
+          "dawnVsInformed": {
+            "diff": 0,
+            "lo": 0,
+            "hi": 0
+          }
+        },
+        "defuse by strike": {
+          "survive": 0.236,
+          "sharedDawn": 0.236,
+          "lostBasin": 0.708,
+          "lostStation": 0.094,
+          "distressRounds": 0.09,
+          "thirdActionUsed": 0.942,
+          "dawnVsInformed": {
+            "diff": -0.182,
+            "lo": -0.22206040542980063,
+            "hi": -0.14193959457019936
+          }
+        },
+        "defuse: signal, else strike": {
+          "survive": 0.346,
+          "sharedDawn": 0.346,
+          "lostBasin": 0.506,
+          "lostStation": 0.202,
+          "distressRounds": 0.152,
+          "thirdActionUsed": 0.57,
+          "dawnVsInformed": {
+            "diff": -0.072,
+            "lo": -0.10648887199083204,
+            "hi": -0.03751112800916794
+          }
+        },
+        "protect when the basin is safe": {
+          "survive": 0.376,
+          "sharedDawn": 0.352,
+          "lostBasin": 0.45,
+          "lostStation": 0.248,
+          "distressRounds": 0.254,
+          "thirdActionUsed": 0.396,
+          "dawnVsInformed": {
+            "diff": -0.066,
+            "lo": -0.09554910456849751,
+            "hi": -0.0364508954315025
+          }
+        }
+      }
+    }
+  }
+}
