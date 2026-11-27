@@ -1,8 +1,12 @@
 # Deploying The Dark Microcosmos to https://benamuwo.me/microcosmos/
 
-**Status, 16 November 2026:** ready. Release `site-2026-11-16-clear` (version 0.7.3) is built,
-its fingerprints are pinned in the installer, and the blog change is sitting uncommitted in
-`~/Root/beamu-blog`. Nothing has been committed, pushed or deployed. Four steps, about ten minutes.
+**Status, 27 November 2026:** ready. Release `site-2026-11-27-arenas` (version 0.8.0: four arenas,
+medals, resonance, and the visual pass) is built and its fingerprints are pinned in the installer.
+Nothing has been committed, pushed or deployed by Claude.
+
+**Which path?** If https://benamuwo.me/microcosmos/ is **not live yet**, do steps 1–4 below (about
+ten minutes). If it **is already live** (an earlier release is installed), skip to
+"Putting Up a Newer Version" (about three minutes).
 
 It works the same way as The Quiet Signal: the game is a folder of static files; the blog serves
 that folder at `/microcosmos/`; one command on the droplet downloads the files, checks every one
@@ -11,7 +15,7 @@ against a pinned fingerprint, and switches to them.
 ## Before You Start
 
 You do **not** need to rebuild anything. The release zip is already at
-`dist-release/microcosmos-site-2026-11-16-clear.zip` and matches the installer.
+`dist-release/microcosmos-site-2026-11-27-arenas.zip` and matches the installer.
 
 Optional, to look first:
 
@@ -47,7 +51,7 @@ your Mac. If you would rather keep it private, use "Private Repository Instead" 
 cd ~/Root/Microcosmos
 git branch -m main
 git add -A
-git commit -m "The Dark Microcosmos 0.7.3: one game, release site-2026-11-16-clear"
+git commit -m "The Dark Microcosmos 0.8.0: one game, release site-2026-11-27-arenas"
 gh repo create RavenSeldon/microcosmos --public --source=. --remote=origin --push
 ```
 
@@ -57,19 +61,19 @@ gh repo create RavenSeldon/microcosmos --public --source=. --remote=origin --pus
 Check the zip, then publish it as a release:
 
 ```sh
-shasum -a 256 dist-release/microcosmos-site-2026-11-16-clear.zip
+shasum -a 256 dist-release/microcosmos-site-2026-11-27-arenas.zip
 ```
 
-**Must print** `8a63b670cd65cda6285109ad4e11f6bf84b5e33f3b6fd94339964c1ff7fb3a74`. If it does
+**Must print** `be5cbdac97854539b18bbaf1f48370df3f8384ed6598900593ddf7e7b3af79c6`. If it does
 not, stop: the zip has changed since it was pinned.
 
 ```sh
-gh release create site-2026-11-16-clear dist-release/microcosmos-site-2026-11-16-clear.zip \
-  --title "The Dark Microcosmos 0.7.3" \
+gh release create site-2026-11-27-arenas dist-release/microcosmos-site-2026-11-27-arenas.zip \
+  --title "The Dark Microcosmos 0.8.0" \
   --notes "Static release for https://benamuwo.me/microcosmos/"
 ```
 
-(No `gh`? On github.com: Releases → Draft a new release → tag `site-2026-11-16-clear` → attach
+(No `gh`? On github.com: Releases → Draft a new release → tag `site-2026-11-27-arenas` → attach
 the zip → Publish.)
 
 ## Step 3. Droplet: one command (2 minutes)
@@ -110,31 +114,46 @@ Skip the public repository. Copy two files to the droplet and run the installer 
 
 ```sh
 cd ~/Root/Microcosmos
-scp deploy/droplet_install.sh dist-release/microcosmos-site-2026-11-16-clear.zip root@<droplet>:/root/
+scp deploy/droplet_install.sh dist-release/microcosmos-site-2026-11-27-arenas.zip root@<droplet>:/root/
 ```
 
 Then on the droplet:
 
 ```sh
-MICROCOSMOS_ZIP_FILE=/root/microcosmos-site-2026-11-16-clear.zip bash /root/droplet_install.sh
+MICROCOSMOS_ZIP_FILE=/root/microcosmos-site-2026-11-27-arenas.zip bash /root/droplet_install.sh
 ```
 
 Every check still runs. Step 1 (the blog) is still needed.
 
-## Putting Up a Newer Version Later
+## Putting Up a Newer Version (the site is already live)
 
-1. In `scripts/build_release.py`, change `TAG` (for example `site-2026-11-20`).
-2. `npm test && npm run release`. It prints two SHA-256 values.
-3. In `deploy/droplet_install.sh`, set `TAG`, `ZIP_SHA` and `RELEASE_SHA` to match.
-4. Commit and push; `gh release create <tag> dist-release/microcosmos-<tag>.zip`.
-5. On the droplet (the blog is already done, so skip it):
+For this release the work is already done on the Mac side except committing and publishing:
+
+```sh
+cd ~/Root/Microcosmos
+npm test                                    # expect: 26 pass
+shasum -a 256 dist-release/microcosmos-site-2026-11-27-arenas.zip
+#   must print be5cbdac97854539b18bbaf1f48370df3f8384ed6598900593ddf7e7b3af79c6
+git add -A
+git commit -m "The Dark Microcosmos 0.8.0: four arenas, medals, resonance"
+git push
+gh release create site-2026-11-27-arenas dist-release/microcosmos-site-2026-11-27-arenas.zip \
+  --title "The Dark Microcosmos 0.8.0" --notes "Static release for https://benamuwo.me/microcosmos/"
+```
+
+Then on the droplet (the blog part is already done, so skip it):
 
 ```sh
 curl -fsSL https://raw.githubusercontent.com/RavenSeldon/microcosmos/main/deploy/droplet_install.sh | SKIP_BLOG=1 bash
 ```
 
-Players' saved journeys live in their own browsers and survive a new version unless the arena's
-`version` in `src/arenas.ts` changes.
+**Later releases, in general:** change `TAG` in `scripts/build_release.py`; `npm test && npm run
+release` (it prints two SHA-256 values); set `TAG`, `ZIP_SHA` and `RELEASE_SHA` in
+`deploy/droplet_install.sh` to match; commit, push, `gh release create`; run the command above.
+
+Players' saved journeys live in their own browsers. A journey is kept per arena and per arena
+`version` (`src/arenas.ts`); raising an arena's version starts its journeys fresh. Medals and what
+players have learned about the worlds are kept across versions.
 
 ## Going Back
 
@@ -151,10 +170,10 @@ To take the page down entirely, revert the blog commit from step 1, push, and pu
 
 | | |
 |---|---|
-| Tag | `site-2026-11-16-clear` |
-| Zip | `dist-release/microcosmos-site-2026-11-16-clear.zip`, 1,058,208 bytes, 14 files + `RELEASE.json` |
-| Zip SHA-256 | `8a63b670cd65cda6285109ad4e11f6bf84b5e33f3b6fd94339964c1ff7fb3a74` |
-| `RELEASE.json` SHA-256 | `f022194eef7b204cf9cf7ce676d6b4e973a3ddbb2bbca2fba7c1e791a6c87989` |
+| Tag | `site-2026-11-27-arenas` |
+| Zip | `dist-release/microcosmos-site-2026-11-27-arenas.zip`, 1,077,940 bytes, 14 files + `RELEASE.json` |
+| Zip SHA-256 | `be5cbdac97854539b18bbaf1f48370df3f8384ed6598900593ddf7e7b3af79c6` |
+| `RELEASE.json` SHA-256 | `4099388735a8a9a084e03636ab8d082400c090a079fe4f367249a879f61a87e6` |
 | Installed to | `/srv/microcosmos/releases/<stamp>/`, with `current` pointing at the live one |
 
 ## How It Is Served

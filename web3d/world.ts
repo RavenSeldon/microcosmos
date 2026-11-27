@@ -166,6 +166,8 @@ export interface World {
   update(s: Scene): void;
   resize(): void;
   screenOf(i: number): { x: number; y: number; visible: boolean };
+  centreOf(i: number): { x: number; y: number; visible: boolean };   // a planet's centre on screen
+  mood(m: Mood): void;                     // the arena's sky: void, stars, nebulae
   select(i: number): void;                 // -1 clears
   preview(p: { kind: PreviewKind; target: number } | null): void;
   play(beats: Beat[], flows: { from: number; to: number }, apply: () => void, onPhase: (phase: number) => void, done: () => void): void;
@@ -178,6 +180,7 @@ export interface World {
   dispose(): void;
   canvas: HTMLCanvasElement;
 }
+export interface Mood { void: number; stars: number; nebulae: [number, number] }
 export interface WorldEvents { pick?(i: number): void; hover?(i: number): void; connect?(from: number, to: number): void }
 
 // `count` planet-ships on one ring. Every position comes from layout.ts, so a larger system is a
@@ -199,6 +202,8 @@ export function createWorld(host: HTMLElement, reducedMotion: boolean, events: W
   const lightDir = new Vector3(0.45, 0.75, 0.48).normalize();
 
   // ---- far field: atmosphere only -------------------------------------------------------------
+  // The far field is the arena's sky: `mood()` recolours the void, the stars and the four nebulae.
+  let starfield: Points | null = null; const nebulae: Sprite[] = [];
   {
     const n = 2600, p = new Float32Array(n * 3), s = new Float32Array(n), g = new Float32Array(n);
     for (let i = 0; i < n; i++) {
@@ -206,10 +211,10 @@ export function createWorld(host: HTMLElement, reducedMotion: boolean, events: W
       p[i * 3] = r * q * Math.cos(t); p[i * 3 + 1] = r * u; p[i * 3 + 2] = r * q * Math.sin(t);
       s[i] = 380 + deco() * 620 * (deco() < 0.07 ? 2.6 : 1); g[i] = 0.4 + deco() * 0.6;
     }
-    scene.add(pointsOf(p, s, g, 0xdfe6ff));
+    starfield = pointsOf(p, s, g, 0xdfe6ff); scene.add(starfield);
     for (const [color, pos, size, op] of [[C.ember, [-70, 18, -120], 230, 0.34], [C.deep, [60, -10, -130], 210, 0.3], [C.ember, [95, 40, -60], 150, 0.16], [C.deep, [-90, -30, 70], 180, 0.18]] as const) {
       const sp = new Sprite(new SpriteMaterial({ map: glow, color, transparent: true, opacity: op, blending: AdditiveBlending, depthWrite: false }));
-      sp.position.set(pos[0], pos[1], pos[2]); sp.scale.set(size, size, 1); scene.add(sp);
+      sp.position.set(pos[0], pos[1], pos[2]); sp.scale.set(size, size, 1); scene.add(sp); nebulae.push(sp);
     }
   }
 
@@ -428,8 +433,9 @@ export function createWorld(host: HTMLElement, reducedMotion: boolean, events: W
   el.addEventListener('wheel', (e) => { e.preventDefault(); view.dist = Math.max(12, Math.min(90, view.dist * (1 + Math.sign(e.deltaY) * 0.08))); view.user = true; }, { passive: false });
 
   // ---- selection, preview, and the four-beat turn ------------------------------------------------
-  const selRing = new LineLoop(loop(PLANET * 2.45, 0, 120), lineMat(C.core, 0.95)); selRing.visible = false; scene.add(selRing);
-  const selRing2 = new LineLoop(loop(PLANET * 2.6, 0, 6), lineMat(C.core, 0.6)); selRing2.visible = false; scene.add(selRing2);
+  // Selection is gold everywhere (label, chip, ring): a fine orbit and a faint hexagonal reticle.
+  const selRing = new LineLoop(loop(PLANET * 2.45, 0, 120), lineMat(C.signal, 0.85)); selRing.visible = false; scene.add(selRing);
+  const selRing2 = new LineLoop(loop(PLANET * 2.75, 0, 6), lineMat(C.signal, 0.28)); selRing2.visible = false; scene.add(selRing2);
   let selected = -1;
   function select(i: number) {
     selected = i;
@@ -563,6 +569,12 @@ export function createWorld(host: HTMLElement, reducedMotion: boolean, events: W
       if (reducedMotion) return;
       transfers.forEach((t) => travel(where(t.from), where(t.to), t.kind === 'used' ? C.signal : C.life, 1050));
       if (transfers.some((t) => t.to === 'basin')) bloom(where('basin'), C.life, 6, 1200);
+    },
+    centreOf(i) { tmp.copy(centre(i)); tmp.project(camera); return { x: (tmp.x * 0.5 + 0.5) * host.clientWidth, y: (-tmp.y * 0.5 + 0.5) * host.clientHeight, visible: tmp.z < 1 }; },
+    mood(m) {
+      renderer.setClearColor(m.void, 1);
+      if (starfield) ((starfield.material as ShaderMaterial).uniforms.uColor.value as Color).set(m.stars);
+      nebulae.forEach((sp, k) => (sp.material as SpriteMaterial).color.set(m.nebulae[k % 2]));
     },
     screenOf(i) { tmp.copy(centre(i)); tmp.y += PLANET * 1.25; tmp.project(camera); return { x: (tmp.x * 0.5 + 0.5) * host.clientWidth, y: (-tmp.y * 0.5 + 0.5) * host.clientHeight, visible: tmp.z < 1 }; },
     dispose() { alive = false; cancelAnimationFrame(raf); document.removeEventListener('visibilitychange', vis); renderer.dispose(); el.remove(); },

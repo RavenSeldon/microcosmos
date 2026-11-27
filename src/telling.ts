@@ -46,6 +46,8 @@ export function tell(m: Moment, g: Game, a: ArenaDef = FIRST_ARENA): string[] {
   for (const e of of('woke')) out.push(`${n(e.world)} wakes.`);
   const servers = [...new Set(of('served').map(e => e.world))];
   for (const s of servers) out.push(`${n(s)} renews what ${list([...new Set(of('served').filter(e => e.world === s).map(e => n(e.other!)))])} sent.`);
+  const resonant = [...new Set(of('resonance').map(e => e.world))];
+  if (resonant.length) out.push(`Resonance: ${list(resonant.map(n))} sings across the network.`);
   for (const e of of('parked')) out.push(`${n(e.world)} rests ${e.amount} used water in ${n(e.other!)}’s cisterns instead of spilling it.`);
   const short = of('short').filter(e => !of('dormant').some(x => x.world === e.world));
   if (short.length) out.push(`${list(short.map(e => n(e.world)))} went thirsty.`);
@@ -121,5 +123,26 @@ export function ending(g: Game, a: ArenaDef = FIRST_ARENA): Ending | null {
   if (strained.length) why.push(`${list(strained.map(n))} ended with more used water than ${strained.length === 1 ? 'it' : 'they'} could renew.`);
   if (g.calm < 3) why.push('There was thirst in the last three moments.');
   return { outcome: 'peace', title: 'A fragile peace.', firstDormant: 0, why: ['The orbit came through the dark, but not whole.', ...why] };
+}
+export type MedalId = 'dawn' | 'zero-waste' | 'pure-network' | 'resonant';
+export type MedalStatus = 'active' | 'ready' | 'earned' | 'missed';
+export interface Medal { id: MedalId; name: string; goal: string; status: MedalStatus; progress?: string }
+export const RESONANCE_GOAL = 12;
+export function medalsOf(actions: Choice[], a: ArenaDef = FIRST_ARENA): Medal[] {
+  let g = newGame(a), spilled = 0, seized = false, tended = false;
+  for (const c of actions) {
+    if (c.type === 'care') tended = true;
+    g = advance(g, c, a);
+    spilled += g.last!.spilled;
+    if (g.last!.events.some(e => e.kind === 'seized')) seized = true;
+  }
+  const done = !!g.outcome, won = g.outcome === 'dawn';
+  const state = (ok: boolean, ready = false): MedalStatus => done ? (won && ok ? 'earned' : 'missed') : !ok ? 'missed' : ready ? 'ready' : 'active';
+  return [
+    { id: 'dawn', name: 'Shared Dawn', goal: `Reach moment ${a.length} with every world awake, calm, and clear of strain.`, status: done ? (won ? 'earned' : 'missed') : 'active' },
+    { id: 'zero-waste', name: 'Zero Drops Lost', goal: 'Reach dawn with no spills and no seizures.', status: state(spilled === 0 && !seized) },
+    { id: 'pure-network', name: 'Pure Currents', goal: 'Reach dawn without using Basin Tending.', status: state(!tended) },
+    { id: 'resonant', name: 'Singing Orbit', goal: `Spark ${RESONANCE_GOAL} Resonance chains (multi-neighbour or multi-hop renewal) and reach dawn.`, status: done ? (won && g.resonance >= RESONANCE_GOAL ? 'earned' : 'missed') : (g.resonance >= RESONANCE_GOAL ? 'ready' : 'active'), progress: `${Math.min(g.resonance, RESONANCE_GOAL)}/${RESONANCE_GOAL}` },
+  ];
 }
 export const linkedTo = (g: Game, d: number, a: ArenaDef = FIRST_ARENA) => pairs(a).flatMap(([x, y], e) => (x === d || y === d) && isLinked(g, e) ? [{ edge: e, other: x === d ? y : x }] : []);

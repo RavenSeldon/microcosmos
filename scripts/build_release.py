@@ -25,7 +25,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SOURCES = [ROOT / "dist"]
 DIST = ROOT / "dist-release"
 OUT = DIST / "microcosmos"
-TAG = "site-2026-11-16-clear"
+TAG = "site-2026-11-27-arenas"
 ZIP = DIST / f"microcosmos-{TAG}.zip"
 
 ALLOWED = {".html", ".css", ".js", ".json", ".svg", ".woff2", ".txt"}

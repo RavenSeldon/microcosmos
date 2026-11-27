@@ -181,3 +181,28 @@ test('expansion scaffold: arenas of 3, 8 and 16 worlds run and conserve water (s
   }
   assert.throws(() => assertArena({ ...A, worlds: A.worlds.slice(0, 2) }), /roster/);
 });
+
+test('all remix arenas validate, conserve water, and reach dawn; medals reflect run performance', async () => {
+  const { ARENAS } = await import('../src/arenas.ts');
+  const { medalsOf, RESONANCE_GOAL } = await import('../src/telling.ts');
+  assert.ok(ARENAS.length >= 4);
+  for (const arena of ARENAS) {
+    assertArena(arena);
+    const r = rnd(arena.id.length * 131 + 7); let g = newGame(arena);
+    while (!g.outcome) {
+      const P2 = pairs(arena);
+      const opts: Choice[] = [rest, { type: 'connect', edge: Math.floor(r() * P2.length) }, { type: 'care', world: Math.floor(r() * arena.worlds.length) }];
+      const c = opts[Math.floor(r() * opts.length)];
+      g = advance(g, unavailable(g, c, arena) ? rest : c, arena);
+      books(g, arena);
+    }
+  }
+  const J = json('./journeys.json') as Record<string, { actions: Choice[] }>;
+  const pure = medalsOf(J['no-tending'].actions, A);
+  assert.equal(pure.find(m => m.id === 'dawn')!.status, 'earned');
+  assert.equal(pure.find(m => m.id === 'pure-network')!.status, 'earned');
+  assert.equal(pure.find(m => m.id === 'resonant')!.status, 'earned');
+  const one = medalsOf(J['one-current'].actions, A);
+  assert.equal(one.find(m => m.id === 'dawn')!.status, 'earned');
+  assert.equal(one.find(m => m.id === 'resonant')!.status, 'missed', `one-current resonance stays below ${RESONANCE_GOAL}`);
+});

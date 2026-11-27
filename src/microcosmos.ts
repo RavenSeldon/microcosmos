@@ -16,11 +16,11 @@ export type Choice =
   | { type: 'connect' | 'release'; edge: number }
   | { type: 'care'; world: number }
   | { type: 'ability'; world: number; target?: number };
-export type EventKind = 'link' | 'unlink' | 'ability' | 'gift' | 'short' | 'dormant' | 'woke' | 'spill' | 'threat' | 'seized' | 'mediated' | 'sheltered' | 'settled' | 'answered' | 'parked' | 'served';
+export type EventKind = 'link' | 'unlink' | 'ability' | 'gift' | 'short' | 'dormant' | 'woke' | 'spill' | 'threat' | 'seized' | 'mediated' | 'sheltered' | 'settled' | 'answered' | 'parked' | 'served' | 'resonance';
 export interface GameEvent { kind: EventKind; world: number; other?: number; amount?: number }
 export interface Moment {
   sky: Sky; rain: number; mist: number; drunk: number; spilled: number; cost: number;   // in, in, out, out, out
-  renewed: number; unmet: number[]; basinUnmet: number; transfers: Transfer[]; events: GameEvent[];
+  renewed: number; resonance: number; unmet: number[]; basinUnmet: number; transfers: Transfer[]; events: GameEvent[];
   learned: string[]; before: number; after: number;
 }
 export type Outcome = 'dawn' | 'peace' | 'night';
@@ -29,7 +29,7 @@ export interface Game {
   arena: string; version: number; beat: number; basin: number; reeds: number; clean: number[]; used: number[];
   streak: number[]; dormant: boolean[]; active: number[]; links: boolean[]; memory: number[]; grudge: boolean[];
   bypass: { edge: number; until: number }[]; threat: { from: number; to: number } | null; quiet: number;
-  night: number; calm: number; known: string[]; outcome: Outcome | null; last: Moment | null;
+  night: number; calm: number; resonance: number; known: string[]; outcome: Outcome | null; last: Moment | null;
 }
 
 const pairCache = new WeakMap<ArenaDef, [number, number][]>();
@@ -43,9 +43,9 @@ export function edgeOf(x: number, y: number, a: ArenaDef = FIRST_ARENA) {
 export function newGame(a: ArenaDef = FIRST_ARENA, known: string[] = []): Game {
   assertArena(a);
   const zero = () => a.worlds.map(() => 0);
-  return { arena: a.id, version: a.version, beat: 0, basin: a.basin.initial, reeds: 0, clean: a.worlds.map(w => w.initial), used: zero(), streak: zero(),
+  return { arena: a.id, version: a.version, beat: 0, basin: a.basin.initial, reeds: 0, clean: a.worlds.map(w => w.initial), used: a.worlds.map(w => w.initialUsed ?? 0), streak: zero(),
     dormant: a.worlds.map(() => false), active: zero(), links: pairs(a).map(() => false), memory: pairs(a).map(() => 0), grudge: pairs(a).map(() => false), bypass: [], threat: null,
-    quiet: -9, night: 0, calm: 0, known: [...known], outcome: null, last: null };
+    quiet: -9, night: 0, calm: 0, resonance: 0, known: [...known], outcome: null, last: null };
 }
 export const totalWater = (g: Game) => g.basin + g.reeds + g.clean.reduce((x, y) => x + y, 0) + g.used.reduce((x, y) => x + y, 0);
 export const skyAt = (beat: number, a: ArenaDef = FIRST_ARENA): Sky => beat < a.dark[0] ? 'gathering' : beat <= a.dark[1] ? 'dark' : 'return';
@@ -147,7 +147,7 @@ export function advance(previous: Game, c: Choice, a: ArenaDef = FIRST_ARENA): G
   const p = pairsOf(a), W = a.worlds, n = W.length;
   g.beat++; g.bypass = g.bypass.filter(b => b.until >= g.beat);
   const sky = skyAt(g.beat, a);
-  const m: Moment = { sky, rain: a.rain[sky], mist: 0, drunk: 0, spilled: 0, cost: 0, renewed: 0, unmet: W.map(() => 0), basinUnmet: 0, transfers: [], events: [], learned: [], before: totalWater(g), after: 0 };
+  const m: Moment = { sky, rain: a.rain[sky], mist: 0, drunk: 0, spilled: 0, cost: 0, renewed: 0, resonance: 0, unmet: W.map(() => 0), basinUnmet: 0, transfers: [], events: [], learned: [], before: totalWater(g), after: 0 };
   const send = (from: Place, to: Place, amount: number, kind: Transfer['kind'] = 'clean') => { if (amount > 0) m.transfers.push({ from, to, amount, kind }); };
   const ev = (kind: EventKind, world: number, other?: number, amount?: number) => m.events.push({ kind, world, ...(other === undefined ? {} : { other }), ...(amount === undefined ? {} : { amount }) });
   const learn = (id: string) => { if (!g.known.includes(id)) { g.known.push(id); m.learned.push(id); } };
@@ -232,15 +232,19 @@ export function advance(previous: Game, c: Choice, a: ArenaDef = FIRST_ARENA): G
     g.used[origin] -= amount; g.used[r.d] += amount; let from = origin;
     for (const e of r.path) { const to = p[e][0] === from ? p[e][1] : p[e][0]; room[e] -= amount; send(from, to, amount, 'used'); if (amount > 3) learn(`${W[idOf('prism')]?.id}.wide`); from = to; }
   };
+  const servedBy = W.map(() => new Set<number>()), relayHit = new Set<number>();
   for (let k = 0; k < n; k++) {
     const origin = (g.beat + k) % n;
     for (let tries = 0; tries < p.length && g.used[origin] > 0; tries++) {
       const r = route(origin, d => capacity[d]); if (!r) break;
       const amount = Math.min(g.used[origin], capacity[r.d], ...r.path.map(e => room[e]));
       carry(origin, r, amount); renew(r.d, amount); ev('served', r.d, origin, amount);
+      servedBy[r.d].add(origin);
+      if (r.path.length >= 2 && !relayHit.has(r.d)) { relayHit.add(r.d); m.resonance++; g.resonance++; ev('resonance', r.d, origin, r.path.length); }
       if (W[r.d].archetype === 'wetland') learn(`${W[r.d].id}.sky`);
     }
   }
+  servedBy.forEach((origins, d) => { if (origins.size >= 2) { m.resonance++; g.resonance++; ev('resonance', d, undefined, origins.size); } });
   { const back = Math.min(g.reeds, a.basin.renew[sky]); g.reeds -= back; g.basin += back; m.renewed += back; }
   // 9. A world about to spill can rest the excess in a neighbouring cistern. It stays strained:
   //    the cistern keeps water from being lost, it does not renew it.

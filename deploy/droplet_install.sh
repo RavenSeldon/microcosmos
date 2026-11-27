@@ -10,10 +10,10 @@
 # Adapted from The Quiet Signal's deploy/droplet_install.sh; same steps, same safeguards.
 set -euo pipefail
 
-TAG="site-2026-11-16-clear"
+TAG="site-2026-11-27-arenas"
 ZIP_URL="https://github.com/RavenSeldon/microcosmos/releases/download/$TAG/microcosmos-$TAG.zip"
-ZIP_SHA="8a63b670cd65cda6285109ad4e11f6bf84b5e33f3b6fd94339964c1ff7fb3a74"
-RELEASE_SHA="f022194eef7b204cf9cf7ce676d6b4e973a3ddbb2bbca2fba7c1e791a6c87989"
+ZIP_SHA="be5cbdac97854539b18bbaf1f48370df3f8384ed6598900593ddf7e7b3af79c6"
+RELEASE_SHA="4099388735a8a9a084e03636ab8d082400c090a079fe4f367249a879f61a87e6"
 BASE="${MICROCOSMOS_BASE:-/srv/microcosmos}"
 SITE="${MICROCOSMOS_SITE:-https://benamuwo.me}"
 say() { printf '\n== %s\n' "$*"; }

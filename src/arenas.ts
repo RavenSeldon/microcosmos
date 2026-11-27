@@ -7,7 +7,7 @@ export interface WorldDef {
   id: string; name: string; short: string; theme: number; archetype: Archetype;
   need: number; heat: number;            // water used each moment; extra during the dark
   store: number; initial: number;        // clean water it can hold; what it starts with
-  hold: number;                          // used water it can hold before it spills
+  hold: number; initialUsed?: number;    // used water it can hold before it spills; optional starting backlog
   renew: Record<Sky, number>;            // used water it can make clean each moment, by sky
   mist: Record<Sky, number>;             // fresh water it gathers for the basin, by sky
   ports: number; reserve: number; keep: number; channel: number;
@@ -90,8 +90,39 @@ export const FIRST_ARENA: ArenaDef = {
       ] },
   ],
 };
-// Future arenas register here. Travel between arenas and shared economies are not built.
-export const ARENAS: readonly ArenaDef[] = [FIRST_ARENA];
+export const LONG_DARK: ArenaDef = {
+  ...FIRST_ARENA,
+  id: 'long-dark', version: 1, name: 'The Long Dark',
+  subtitle: 'Eight moments without rain · Ember and The Unobserved carry the orbit',
+  dark: [6, 13], rain: { gathering: 2, dark: 0, return: 3 },
+  basin: { ...FIRST_ARENA.basin, initial: 12 },
+};
+
+export const DRY_RETURN: ArenaDef = {
+  ...FIRST_ARENA,
+  id: 'dry-return', version: 1, name: 'The Dry Return',
+  subtitle: 'Rain barely returns after the dark · build a true closed loop',
+  rain: { gathering: 2, dark: 0, return: 1 },
+  basin: { ...FIRST_ARENA.basin, initial: 12 },
+};
+
+export const FRACTURED_ORBIT: ArenaDef = {
+  ...FIRST_ARENA,
+  id: 'fractured-orbit', version: 2, name: 'The Fractured Orbit',
+  subtitle: 'Backlog is already rising at moment one · wire fast before the dark hits',
+  // The starting backlog adds eleven water to the orbit. With the basin at 12 that made neglect
+  // safer here than anywhere (passive play reached a fragile peace). At 9, neglect brings the
+  // long night at moment 12, as the subtitle promises, and attentive play still reaches dawn.
+  basin: { ...FIRST_ARENA.basin, initial: 9 },
+  worlds: FIRST_ARENA.worlds.map(w =>
+    w.id === 'ember' ? { ...w, initialUsed: 4 }
+      : w.id === 'obsidian' ? { ...w, initialUsed: 4 }
+        : w.id === 'prism' ? { ...w, initialUsed: 3 }
+          : w),
+};
+
+export const ARENAS: readonly ArenaDef[] = [FIRST_ARENA, LONG_DARK, DRY_RETURN, FRACTURED_ORBIT];
+export const arenaById = (id: string): ArenaDef => ARENAS.find(a => a.id === id) ?? FIRST_ARENA;
 export const ARCHETYPES: readonly Archetype[] = ['shelter', 'wetland', 'forge', 'reservoir', 'prism', 'shifter'];
 
 export function assertArena(a: ArenaDef) {
@@ -102,6 +133,7 @@ export function assertArena(a: ArenaDef) {
   for (const w of a.worlds) {
     const skies = [...Object.values(w.renew), ...Object.values(w.mist)];
     if (!w.id || !int(w.theme) || !int(w.need, 1) || !int(w.heat) || !int(w.store, w.need + w.heat) || !int(w.initial) || w.initial > w.store || !int(w.hold, 3)
+      || (w.initialUsed !== undefined && (!int(w.initialUsed) || w.initialUsed > w.hold))
       || skies.some(v => !int(v)) || !int(w.ports, 1) || w.ports >= n || !int(w.reserve) || !int(w.keep, 1) || !int(w.channel, 1) || !ARCHETYPES.includes(w.archetype)) throw new Error(`Invalid world: ${w.id}`);
   }
 }

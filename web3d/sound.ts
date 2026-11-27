@@ -39,6 +39,7 @@ export function createSoundscape(a: ArenaDef) {
       if (action) voice(action.world, now, false, dark);
       const heard = [...new Set(m.transfers.flatMap(t => [t.from, t.to]).filter((d): d is number => typeof d === 'number' && !g.dormant[d]))];
       heard.forEach((d, i) => voice(d, now + .16 + i * .105, true, dark));
+      if (m.resonance > 0) { tone(523.25, now + .62, .75, .022); tone(659.25, now + .72, .7, .018); tone(783.99, now + .82, .85, .016); }
       if (m.learned.length) { tone(784, now + .88, .75, .022); tone(1174.66, now + 1.02, .6, .012); }
       if (m.events.some(e => e.kind === 'woke')) tone(523.25, now + .8, 1.1, .03);
       if (g.outcome) {

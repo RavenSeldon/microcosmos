@@ -182,3 +182,33 @@ planet-to-planet dragging, current release and undo, Prism's target preview, por
 sound controls, and keyboard-opened notes stopping auto-flow. No browser console errors observed.
 Sound output was not assessed by a human listener. Real touch hardware and screen readers remain
 unverified, as does enjoyment or suitability across ages.
+
+## 0.8.0 — Four skies, medals, resonance (27 November 2026)
+
+Added by another agent (Gemini), then reviewed and tightened (Claude). The six worlds, the water
+law and the First Orbit's numbers are unchanged.
+
+**Arenas.** Four arenas share the same worlds and rules under different skies:
+
+| Arena | What differs | Neglect | A recorded dawn |
+|---|---|---|---|
+| The First Orbit | The original | Long night at moment 12 | 8 choices |
+| The Long Dark | The dark runs moments 6–13; more rain before it; basin starts at 12 | Long night at 15 | 10 choices |
+| The Dry Return | Rain after the dark falls to 1 a moment; basin starts at 12 | Long night at 18 | 8 choices |
+| The Fractured Orbit | Ember, Obsidian and Prism start with used water waiting; basin starts at 9 | Long night at 12 | 9 choices |
+
+The Fractured Orbit's basin was lowered from 12 to 9 in review (arena version 2). Its starting
+backlog adds eleven water to the orbit, and at 12 neglect reached a fragile peace there, which
+contradicted the arena's premise. `test/arenas.test.ts` now requires, for every arena, a recorded
+dawn (`test/arena-journeys.json`, from `node scripts/arenas.ts`) and the long night under neglect.
+
+**Resonance** counts, without moving any water, each moment a world renews used water for two or
+more neighbours, or receives it along a chain of two or more currents. **Medals** per arena: Shared
+Dawn, Zero Drops Lost (no spills, no seizures), Pure Currents (no tending), Singing Orbit (12
+resonance and dawn). An attentive greedy player earns three of four in the First Orbit and the Dry
+Return; whether 12 is the right bar is a playtest question.
+
+**Presentation.** Each arena has its own sky (`web3d/looks.ts`: void, stars, nebulae in 3D; accent,
+nebula and astrolabe sigil in CSS) and a title card on entering. When the world panel or a dispute
+is open, the worlds move into the free region instead of being covered (phones: a bottom sheet with
+the worlds above). Labels that would sit on a neighbouring planet drop beneath their own.

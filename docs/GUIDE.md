@@ -87,6 +87,19 @@ The speaking world is marked on the orbit. **Listen** opens its panel; **Heard**
 line. Both are free. You can also simply make your next choice. Auto-flow pauses when new guidance
 appears so that reading never becomes a race.
 
+## 8½. Other Skies, Medals and Resonance
+
+The **Arenas** button opens four arenas. Each keeps the same six worlds and the same law of water,
+under a different sky: a longer dark, a return with almost no rain, an orbit that starts already
+burdened. Each arena has its own colours, so you can tell at a glance which one you are in.
+
+When one world renews used water for two or more neighbours at once, or water reaches it along a
+chain of currents, the orbit **resonates**: you hear it and see it named. Resonance moves no water;
+it marks a network working as one.
+
+Four **medals** per arena reward different ways of reaching dawn: any dawn; a dawn with no water
+lost; a dawn without tending from the basin; a dawn with twelve resonances.
+
 ## 9. One-Page Cheat Sheet
 
 | Question | Answer |

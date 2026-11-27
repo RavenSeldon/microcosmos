@@ -352,10 +352,65 @@ game played through it in headless Chrome with no refused requests. The blueprin
 **Human actions, in order:** push the blog, publish this repository and the release, run the
 installer on the droplet. See `deploy/DEPLOY.md`.
 
+## 27 November 2026 — Legibility, Resonance, Medals & Remix Arenas (Gemini; 23 tests passing; archive 106 passing)
+
+**Basis.** Ben asked to make *The Dark Microcosmos* genuinely more fun and less esoteric while keeping what is invariant at its base (conservation-law circulation, seasonal phase flip, asymmetric archetypes, deterministic telegraphing, planet-to-planet currents) and adding clear incentives and reward structures.
+
+**Done.**
+- **Conservation-safe Resonance (`src/microcosmos.ts`, `src/telling.ts`, `web3d/feedback.ts`, `web3d/sound.ts`):** Added `resonance` tracking (`Moment.resonance`, `Game.resonance`, `'resonance'` event) whenever a world renews backlog for 2+ distinct neighbours in one moment or completes a 2+ hop renewal chain. Zero water is created; all conservation books remain exact. Paired with a visual wake accent, a `"Resonance across the orbit"` moment cue, and a harmonic triad in `sound.ts`.
+- **Live Run Medals (`src/telling.ts`, `web3d/game.ts`, `web3d/index.html`, `web3d/game.css`):** Added `medalsOf()` tracking 4 live, persistent medals per arena: **Shared Dawn**, **Zero Drops Lost** (0 spills, 0 seizures), **Pure Currents** (0 Basin Tending), and **Singing Orbit** (12+ Resonance sparks calibrated against `test/journeys.json`). Displayed live under the sky ribbon and on the ending screen, persisted in `localStorage`.
+- **Three Remix Arenas (`src/arenas.ts`, `web3d/game.ts`):** Added `initialUsed` support and 3 new arenas alongside `FIRST_ARENA` (whose numbers remain untouched): **The Long Dark** (8 dark moments, M6–M13), **The Dry Return** (rain = 1 in Act 3), and **The Fractured Orbit** (Ember, Obsidian, and Prism start with backlog at M1). Verified with a beam search that all 4 arenas reach Shared Dawn with Resonance, and added a conservation + medal test in `test/microcosmos.test.ts`.
+- **On-Planet Micro-HUD & Crisp UI (`web3d/game.ts`, `web3d/game.css`, `web3d/index.html`):** Full-bleed cosmic stage (`inset: 0`) with a pure-CSS atmospheric sky wash and whisper-thin SVG astrolabe frame; contextual floating inspector drawer (appears only when a planet is selected, dismissed on empty-space click or `Esc`); Director-style diegetic planet callouts (tracked uppercase titles, live net-flow glyph, 2px luminous cyan/amber telemetry hairlines with strain tick, circular port nodes, and pulsing state signals); centered floating bottom dock + cinematic subtitle strip; and zero-churn cached label transforms (`translate3d`) in `place()`. Added an **Arenas** switcher dialog and a **Next arena** CTA on Dawn endings.
+
+**Verified.** `npm test` (23/23 passing), `npm run test:archive` (106/106 passing), `npm run build` (clean Vite build to `dist/`). Nothing committed or pushed.
+
+**Still not established.** Human playtest feel on desktop and real phones, whether the on-planet micro-HUD stays uncluttered at all camera angles and narrow widths, and whether `RESONANCE_GOAL = 12` feels like the right bar in human play.
+
+## 27 November 2026 — Review, Tightening and Four Skies (Claude; 26 tests passing; archive 106 passing)
+
+**Basis.** Ben asked to review Gemini's 27 November changes (above), tighten and improve them, make
+each arena visibly distinct, find and polish visual bugs, and raise the whole to a first-class space
+game, building on the invariants. Played at 1440×900, 1280×800, 1000×760 and 390×844 before changing.
+
+**Found, and fixed.**
+- *Arenas looked identical* apart from a small text tag. Now each has its own sky: `web3d/looks.ts`
+  (presentation only) recolours the 3D void, stars and nebulae through a new `world.mood()`; CSS
+  under `body[data-arena]` sets an accent (brand, sky eyebrow, ribbon's dark span, astrolabe, main
+  button), a nebula layer and an astrolabe sigil (an eclipse arc for the Long Dark, dust rings for
+  the Dry Return, broken rings for the Fractured Orbit). Entering an arena shows its title card.
+  The arena dialog previews each sky.
+- *The full-bleed redesign covered the worlds.* The world panel and the dispute card hid the left
+  planets; at 1000px they also covered the sky ribbon and collided with the voice. Now the dispute
+  and the panel share one side column, and the worlds, labels, sky, dock and astrolabe live in the
+  free region beside it. On phones the column is a bottom sheet and the worlds stay above it.
+- *Phones:* the bottom bar ran off-screen (a wrapping flex column sized rows to their content);
+  selecting a world covered every planet. Both fixed.
+- *Labels* sat on neighbouring planets (Ember's on Verdance). A label that would overlap another
+  planet now drops beneath its own world (`world.centreOf()` + `place()`).
+- *Smaller:* intro eyebrow and reassurance were off-centre; wrapped eyebrows overlapped (line
+  height 1); the selection reticle was bright white while selection is gold everywhere else; a
+  seam showed behind the side column in warm and crimson skies; a type error in `feedback.ts`; the
+  Shared Dawn medal text said "moment 18" regardless of arena.
+- *The Fractured Orbit contradicted itself:* its starting backlog adds eleven water, so neglect
+  reached a fragile peace there (the only arena where doing nothing did not lose), and an attentive
+  greedy player could not reach dawn. Basin lowered 12 → 9, arena version 2: neglect now brings the
+  long night at moment 12; dawn is reachable.
+
+**Added evidence.** `scripts/arenas.ts` writes a recorded dawn per arena (`test/arena-journeys.json`);
+`test/arenas.test.ts` replays each to dawn and requires the long night under neglect in every arena.
+Browser: all four arenas, switching with the title card, inspector, dispute, endings, reduced motion,
+phone layout, and a full pass through the blog blueprint under the release CSP with no refusals.
+
+**Release.** 0.8.0, `site-2026-11-27-arenas`, pinned in `deploy/`. `deploy/DEPLOY.md` now says which
+path to take (first deploy, or update an already-live site). Nothing committed, pushed or deployed.
+
+**Not established.** Whether the arenas feel different to play and not only to look at; whether 12
+resonance is the right bar; real phones; screen-reader order in the side column.
+
 ## Resume Point
 
-Read `README.md`, `docs/GUIDE.md`, and `docs/MICROCOSMOS.md`. Run `npm test` (22 tests) and
-`npm run test:archive` (106). Version 0.7.3 is packaged as `site-2026-11-16-clear`; deployment pins
-refer to the local artifact, not a published release. Older zips and archived implementations
-are preserved. Nothing is committed, pushed or deployed. Next design evidence should come
-from people playing, rather than another layer of mechanics.
+Read `README.md`, `docs/GUIDE.md` and `docs/MICROCOSMOS.md` (its 0.8.0 section). Run `npm test`
+(26) and `npm run test:archive` (106). After changing any arena's numbers, re-run
+`node scripts/arenas.ts` and bump that arena's `version`. Release 0.8.0 `site-2026-11-27-arenas` is
+built locally and pinned; to ship it, follow `deploy/DEPLOY.md`. Next evidence should come from
+people playing the four arenas.

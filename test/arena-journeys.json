@@ -1,0 +1,274 @@
+{
+ "first-orbit": {
+  "version": 2,
+  "actions": [
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "connect",
+    "edge": 0
+   },
+   {
+    "type": "connect",
+    "edge": 3
+   },
+   {
+    "type": "care",
+    "world": 2
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "ability",
+    "world": 0
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "ability",
+    "world": 0
+   },
+   {
+    "type": "care",
+    "world": 0
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "connect",
+    "edge": 8
+   },
+   {
+    "type": "care",
+    "world": 2
+   }
+  ]
+ },
+ "long-dark": {
+  "version": 1,
+  "actions": [
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "connect",
+    "edge": 0
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "care",
+    "world": 4
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "care",
+    "world": 4
+   },
+   {
+    "type": "care",
+    "world": 4
+   },
+   {
+    "type": "ability",
+    "world": 0
+   },
+   {
+    "type": "connect",
+    "edge": 1
+   },
+   {
+    "type": "care",
+    "world": 4
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "care",
+    "world": 4
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "connect",
+    "edge": 7
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "ability",
+    "world": 0
+   }
+  ]
+ },
+ "dry-return": {
+  "version": 1,
+  "actions": [
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "connect",
+    "edge": 0
+   },
+   {
+    "type": "connect",
+    "edge": 3
+   },
+   {
+    "type": "care",
+    "world": 2
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "ability",
+    "world": 0
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "ability",
+    "world": 0
+   },
+   {
+    "type": "care",
+    "world": 0
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "connect",
+    "edge": 8
+   },
+   {
+    "type": "care",
+    "world": 2
+   }
+  ]
+ },
+ "fractured-orbit": {
+  "version": 2,
+  "actions": [
+   {
+    "type": "connect",
+    "edge": 5
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "connect",
+    "edge": 1
+   },
+   {
+    "type": "connect",
+    "edge": 7
+   },
+   {
+    "type": "ability",
+    "world": 1
+   },
+   {
+    "type": "ability",
+    "world": 4,
+    "target": 5
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "ability",
+    "world": 2
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "rest"
+   },
+   {
+    "type": "release",
+    "edge": 7
+   },
+   {
+    "type": "release",
+    "edge": 5
+   },
+   {
+    "type": "connect",
+    "edge": 8
+   }
+  ]
+ }
+}

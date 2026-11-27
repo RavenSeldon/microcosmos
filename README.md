@@ -35,7 +35,7 @@ you can read it, listen to its world, or simply make your next choice.
 ## Verify
 
 ```sh
-npm test               # 22 tests: economy, endings, strategies, witnesses, saves, feedback, voices
+npm test               # 26 tests: economy, endings, arenas, strategies, witnesses, saves, feedback, voices
 npm run strategies     # plays the arena many ways and prints what happened (several minutes)
 npm run witnesses      # re-finds a situation where each kind of choice is strictly best
 npm run test:archive   # the archived implementations' 106 tests
@@ -53,6 +53,7 @@ npm run release        # dist/ + per-file receipt + deterministic zip → dist-r
 | `src/telling.ts` | Every sentence about what happened, what would happen, and how it ended. No DOM |
 | `web3d/game.ts`, `game.css`, `index.html` | The page: input, instruments, saving, undo, sound |
 | `web3d/feedback.ts`, `sound.ts` | Recorded exchanges become a short visual beat and six optional musical voices |
+| `web3d/looks.ts` | Each arena's sky: presentation only, never rules |
 | `web3d/world.ts`, `themes.ts`, `layout.ts`, `scene.ts` | The renderer and the six planet designs |
 | `scripts/strategies.ts`, `scripts/witnesses.ts` | Evidence for the design claims; write `test/journeys.json` and `test/witnesses.json` |
 | `test/` | What the rules guarantee |
